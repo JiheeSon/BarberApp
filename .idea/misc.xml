@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_blue_boundary.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_category.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_edit_text.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_gray_boundary.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_no_boundary.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/splash_background.xml" value="0.176" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_dashboard.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
       </map>
     </option>
