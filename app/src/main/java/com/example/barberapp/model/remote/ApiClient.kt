@@ -6,38 +6,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-//    val retrofit by lazy {
-//        val logInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
-//
-//        val client = OkHttpClient.Builder().apply {
-//            addInterceptor(logInterceptor)
-//        }.build()
-//
-//        val r = Retrofit.Builder().apply {
-//            baseUrl("https://psmobitech.com/barberapp/v3/index.php/api/")
-//            addConverterFactory(GsonConverterFactory.create())
-//            client(client)
-//        }.build()
-//
-//        r   // return Retrofit object
-//    }
+    val retrofit: Retrofit by lazy {
+        val logInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
-    private lateinit var retrofit: Retrofit
+        val client = OkHttpClient.Builder().apply {
+            addInterceptor(logInterceptor)
+        }.build()
 
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
+        val retrofit = Retrofit.Builder().apply {
+            baseUrl("https://passageoftime.me:2333/")
+            addConverterFactory(GsonConverterFactory.create())
+            client(client)
+        }.build()
 
-    private val okHttpClient = OkHttpClient.Builder().apply {
-        addInterceptor(loggingInterceptor)
-    }.build()
-
-    fun getRetrofit(baseUrl: String): Retrofit {
-        retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-        return retrofit
+        retrofit   // return Retrofit object
     }
 }

@@ -3,19 +3,19 @@ package com.example.barberapp.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityRegistrationBinding
 import com.example.barberapp.model.Repository
-import com.example.barberapp.viewmodel.RegistrationViewModel
-import com.example.barberapp.viewmodel.RegistrationVMFactory
+import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.viewmodel.AuthVMFactory
+import com.example.barberapp.viewmodel.AuthViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
-    private lateinit var viewModel: RegistrationViewModel
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
         viewModel.error.observe(this) {
-            openDialog(1, it!!)
+            openDialog(-1, it!!)
         }
     }
 
@@ -62,30 +62,20 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun setUpInputObserver() {
-        viewModel.isMobileNotEmpty.observe(this) {
-            binding.editMobile.error = if (it!!) null else "Required"
+        viewModel.mobileError.observe(this) {
+            binding.editMobile.error = it
         }
-
-        viewModel.isMobileValid.observe(this) {
-            binding.editMobile.error = if (it!!) null else "Invalid Number"
+        viewModel.passwordError.observe(this) {
+            binding.editPassword.error = it
         }
-
-        viewModel.isPasswordNotEmpty.observe(this) {
-            binding.editPassword.error = if (it!!) null else "Required"
-        }
-
-        viewModel.isConfirmNotEmpty.observe(this) {
-            binding.editConfirmPassword.error = if (it!!) null else "Required"
-        }
-
-        viewModel.matchPassword.observe(this) {
-            binding.editConfirmPassword.error = if (it!!) null else "Please check again"
+        viewModel.confirmPasswordError.observe(this) {
+            binding.editConfirmPassword.error = it
         }
     }
 
     private fun setUpViewModel() {
-        val vmFactory = RegistrationVMFactory(Repository())
-        viewModel = ViewModelProvider(this, vmFactory)[RegistrationViewModel::class.java]
+        val vmFactory = AuthVMFactory(Repository(ApiService.getInstance()))
+        viewModel = ViewModelProvider(this, vmFactory)[AuthViewModel::class.java]
         binding.viewModel = viewModel
     }
 

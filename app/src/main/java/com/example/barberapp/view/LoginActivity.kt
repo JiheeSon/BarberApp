@@ -10,15 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityLoginBinding
 import com.example.barberapp.model.Repository
-import com.example.barberapp.viewmodel.LoginVMFactory
-import com.example.barberapp.viewmodel.LoginViewModel
-import com.example.barberapp.viewmodel.RegistrationVMFactory
-import com.example.barberapp.viewmodel.RegistrationViewModel
+import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.viewmodel.*
 import com.google.firebase.messaging.FirebaseMessaging
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,21 +38,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val vmFactory = LoginVMFactory(Repository())
-        viewModel = ViewModelProvider(this, vmFactory)[LoginViewModel::class.java]
+        val vmFactory = AuthVMFactory(Repository(ApiService.getInstance()))
+        viewModel = ViewModelProvider(this, vmFactory)[AuthViewModel::class.java]
         binding.viewModel = viewModel
     }
 
     private fun setupObservers() {
         viewModel.loginResponse.observe(this) {
-            //saveUser(it.user)
             startActivity(Intent(baseContext, DashboardActivity::class.java))
             finish()
-            //Toast.makeText(this, it.message, Toast.LENGTH_SHORT)
         }
 
         viewModel.error.observe(this) {
-            //Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
             openDialog(it!!)
         }
     }

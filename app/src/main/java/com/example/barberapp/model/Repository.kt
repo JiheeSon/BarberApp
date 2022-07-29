@@ -12,19 +12,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Repository() {
-    private val retrofit = ApiClient.getRetrofit("https://psmobitech.com/barberapp/v3/index.php/api/")
-    private val apiService = retrofit.create(ApiService::class.java)
-
+class Repository(private val apiService: ApiService) {
     val isProcessing = ObservableField<Boolean>()
     val error = MutableLiveData<String>()
 
     val registrationResponse = MutableLiveData<RegistrationResponse>()
     val loginResponse = MutableLiveData<LoginResponse>()
 
-    fun login(loginRequest: LoginRequest, header: String) {
+    fun login(loginRequest: LoginRequest) {
         isProcessing.set(true)
-        val call = apiService.loginUser(header, loginRequest)
+        val call = apiService.loginUser(loginRequest)
 
         call.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.barberapp.viewmodel.LoginViewModel" />
+            type="com.example.barberapp.viewmodel.AuthViewModel" />
         <import type="android.view.View" />
     </data>
 
