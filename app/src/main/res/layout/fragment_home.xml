@@ -30,7 +30,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/welcome"
-                android:text="Welcome!"
+                android:text="@string/welcome"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_25sp"
                 android:textStyle="bold"
@@ -41,7 +41,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/welcome_sub"
-                android:text="Let's make your hair attractive"
+                android:text="@string/let_s_make_your_hair_attractive"
                 android:textSize="@dimen/_17sp"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/welcome"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:text="Appointment"
+                android:text="@string/appointment"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/btn_reserve"
                 app:layout_constraintStart_toStartOf="@id/btn_reserve"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:text="Services"
+                android:text="@string/services"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/btn_service"
                 app:layout_constraintStart_toStartOf="@id/btn_service"
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:text="Hours"
+                android:text="@string/hours"
                 android:textColor="@color/white"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/btn_hours"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:text="More"
+                android:text="@string/more"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/btn_more"
                 app:layout_constraintStart_toStartOf="@id/btn_more"
@@ -171,8 +171,8 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/recommend"
-                android:text="Popular Now"
+                android:id="@+id/combo_deal"
+                android:text="@string/combo_deal"
                 android:textColor="@color/main_gray"
                 android:textSize="@dimen/_20sp"
                 android:textStyle="bold"
@@ -182,13 +182,13 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_popular"
-                app:layout_constraintTop_toBottomOf="@id/recommend"
+                app:layout_constraintTop_toBottomOf="@id/combo_deal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/barbers"
-                android:text="Barbers"
+                android:text="@string/barbers"
                 android:textSize="@dimen/_20sp"
                 android:textColor="@color/main_gray"
                 android:textStyle="bold"

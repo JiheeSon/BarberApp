@@ -4,34 +4,39 @@
         <item
             android:id="@+id/nav_book"
             android:icon="@drawable/ic_baseline_insert_invitation_24"
-            android:title="Book Apointement" />
+            android:title="@string/book_appointment" />
         <item
             android:id="@+id/nav_service"
             android:icon="@drawable/ic_baseline_cleaning_services_24"
-            android:title="Our Services" />
+            android:title="@string/our_services" />
         <item
             android:id="@+id/nav_reach"
-            android:title="How To reach?"/>
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="@string/how_to_reach"/>
         <item
             android:id="@+id/nav_hours"
-            android:title="Working Hours"/>
+            android:icon="@drawable/ic_baseline_access_time_24"
+            android:title="@string/working_hours"/>
         <item
             android:id="@+id/nav_rating"
-            android:title="User Ratings"/>
+            android:icon="@drawable/ic_baseline_rate_review_24"
+            android:title="@string/user_ratings"/>
     </group>
 
     <group
         android:id="@+id/group2"
         android:checkableBehavior="single">
         <item
-            android:title="Communicate">
+            android:title="@string/communicate">
             <menu>
                 <item
                     android:id="@+id/nav_share"
-                    android:title="Share"/>
+                    android:icon="@drawable/ic_baseline_share_24"
+                    android:title="@string/share"/>
                 <item
                     android:id="@+id/nav_about"
-                    android:title="About"/>
+                    android:icon="@drawable/ic_baseline_info_24"
+                    android:title="@string/about"/>
             </menu>
         </item>
     </group>
