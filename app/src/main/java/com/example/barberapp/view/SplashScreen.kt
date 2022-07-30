@@ -12,8 +12,8 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler().postDelayed({
-            val pref = getSharedPreferences("users", MODE_PRIVATE)
-            if (pref.contains("name")) {
+            val pref = getSharedPreferences("user_info", MODE_PRIVATE)
+            if (pref.contains("user_Id")) {
                 startActivity(Intent(this, DashboardActivity::class.java))
             } else {
                 startActivity(Intent(this, LoginActivity::class.java))

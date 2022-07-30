@@ -11,6 +11,7 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityLoginBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.viewmodel.*
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -45,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.loginResponse.observe(this) {
+            saveUser(it)
             startActivity(Intent(baseContext, DashboardActivity::class.java))
             finish()
         }
@@ -65,14 +67,13 @@ class LoginActivity : AppCompatActivity() {
         alertDialog.show()
     }
 
-//    private fun saveUser(user: User) {
-//        val pref = getSharedPreferences("users", MODE_PRIVATE)
-//
-//        pref.edit().apply{
-//            putString("name", user.name)
-//            putString("mobile_no", user.mobile_no)
-//            putString("user_id", user.user_id)
-//            apply()
-//        }
-//    }
+    private fun saveUser(user: LoginResponse) {
+        val pref = getSharedPreferences("user_info", MODE_PRIVATE)
+
+        pref.edit().apply{
+            putString("mobile_no", user.mobileNo)
+            putString("user_Id", user.userId)
+            apply()
+        }
+    }
 }
