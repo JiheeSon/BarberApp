@@ -14,4 +14,5 @@
     <color name="main_brown">#996123</color>
     <color name="main_green">#6EA46E</color>
     <color name="main_gray">#7F7369</color>
+    <color name="gray_white">#F4F4F4</color>
 </resources>
