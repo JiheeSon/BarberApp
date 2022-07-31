@@ -4,12 +4,10 @@ import com.example.barberapp.model.remote.request.LoginRequest
 import com.example.barberapp.model.remote.request.RegistrationRequest
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
+import com.example.barberapp.model.remote.response.service.ServiceResponse
 import retrofit2.Call
 import retrofit2.create
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     companion object {
@@ -28,4 +26,7 @@ interface ApiService {
     fun loginUser(
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
+
+    @GET("/service/getServices")
+    fun getServices(): Call<ServiceResponse>
 }

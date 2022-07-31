@@ -40,7 +40,6 @@ class AuthViewModel(private val repository: Repository): ViewModel() {
         if (validateLoginInput()) {
             val loginRequest = LoginRequest(mobileNo.value!!, password.value!!)
             repository.login(loginRequest)
-            Log.i("jihee", "hiiiiiiiiiii")
         }
     }
 

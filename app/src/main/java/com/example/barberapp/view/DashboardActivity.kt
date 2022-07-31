@@ -21,20 +21,12 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun initNavBar() {
         setSupportActionBar(binding.toolbar)
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        //supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
-
-//        binding.toolbar.setNavigationOnClickListener {
-//            binding.layoutDashboard.openDrawer(GravityCompat.START)
-//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_notification, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
