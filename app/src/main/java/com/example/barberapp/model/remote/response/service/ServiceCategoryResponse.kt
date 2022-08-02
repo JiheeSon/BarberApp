@@ -1,7 +1,7 @@
 package com.example.barberapp.model.remote.response.service
 
-data class ServiceResponse(
+data class ServiceCategoryResponse(
     val message: String,
-    val services: List<Service>,
+    val serviceCategories: List<ServiceCategory>,
     val status: Int
 )

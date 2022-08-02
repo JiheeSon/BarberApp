@@ -25,8 +25,12 @@ class ServiceActivity : AppCompatActivity() {
     }
 
     private fun setUpObserver() {
-        viewModel.serviceResponse.observe(this) {
-            Log.i("tag", it.toString())
+        viewModel.serviceCategoryResponse.observe(this) {
+            Log.d("jihee", it.toString())
+        }
+
+        viewModel.services.observe(this) {
+            Log.d("jihee", it.toString())
         }
     }
 

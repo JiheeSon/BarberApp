@@ -5,9 +5,9 @@ import com.example.barberapp.model.remote.request.RegistrationRequest
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
+import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
 import retrofit2.Call
-import retrofit2.create
 import retrofit2.http.*
 
 interface ApiService {
@@ -28,9 +28,14 @@ interface ApiService {
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
 
-    @GET("/service/getServices")
-    fun getServices(): Call<ServiceResponse>
-
     @GET("/barber/getBarbers")
     fun getBarbers(): Call<BarbersResponse>
+
+    @GET("/service/getServiceCategory")
+    fun getServiceCategory(): Call<ServiceCategoryResponse>
+
+    @GET("/service/category/{category_id}")
+    suspend fun getServiceByCategory(
+        @Path("category_id") id: String
+    ): ServiceResponse
 }
