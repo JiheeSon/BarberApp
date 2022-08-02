@@ -26,4 +26,5 @@
     <string name="share">Share</string>
     <string name="about">About</string>
     <string name="logout">Logout</string>
+    <string name="select_barber">Select Barber</string>
 </resources>
