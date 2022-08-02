@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.DashboardActivity">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_drawer"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/menu_nav"
-        app:headerLayout="@layout/header_nav"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -57,6 +48,13 @@
             android:layout_height="0dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_drawer"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/menu_nav"
+        app:headerLayout="@layout/header_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

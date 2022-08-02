@@ -37,6 +37,10 @@
                     android:id="@+id/nav_about"
                     android:icon="@drawable/ic_baseline_info_24"
                     android:title="@string/about"/>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_logout_24"
+                    android:title="@string/logout" />
             </menu>
         </item>
     </group>

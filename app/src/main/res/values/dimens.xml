@@ -11,4 +11,5 @@
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_200dp">200dp</dimen>
     <dimen name="_0dp">0dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
 </resources>

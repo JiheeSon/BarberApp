@@ -3,6 +3,8 @@ package com.example.barberapp.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
@@ -12,6 +14,7 @@ import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.viewmodel.AuthVMFactory
 import com.example.barberapp.viewmodel.AuthViewModel
 import com.google.firebase.messaging.FirebaseMessaging
+import org.json.JSONArray
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
@@ -33,9 +36,27 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
+        setUpSpinner()
         setUpViewModel()
         setUpInputObserver()
         setUpApiObserver()
+    }
+
+    private fun setUpSpinner() {
+        val jsonString = assets.open("CountryCodes.json").reader().readText()
+        val jsonArray = JSONArray(jsonString)
+        val adapter = CodeSpinnerAdapter(this, jsonArray)
+        binding.spinnerCode.adapter = adapter
+
+        binding.spinnerCode.setSelection(230)
+        var selected = ""
+        binding.spinnerCode.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                selected = jsonArray.getJSONObject(p2).getString("dial_code")
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
     }
 
     private fun setUpApiObserver() {

@@ -25,4 +25,5 @@
     <string name="communicate">Communicate</string>
     <string name="share">Share</string>
     <string name="about">About</string>
+    <string name="logout">Logout</string>
 </resources>

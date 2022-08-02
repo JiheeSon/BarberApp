@@ -24,14 +24,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_code"
+        tools:listitem="@layout/item_spinner"
+        app:layout_constraintTop_toTopOf="@id/etLayoutMobile"
+        app:layout_constraintBottom_toBottomOf="@id/etLayoutMobile"
+        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/SpinnerTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etLayoutMobile"
         android:layout_marginTop="@dimen/_10dp"
         app:layout_constraintTop_toBottomOf="@id/mobile_number"
+        app:layout_constraintStart_toEndOf="@id/spinner_code"
+        app:layout_constraintEnd_toEndOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:errorEnabled="true"
         app:boxStrokeColor="@color/black"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
