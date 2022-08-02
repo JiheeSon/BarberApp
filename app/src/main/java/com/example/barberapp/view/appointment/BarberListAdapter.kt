@@ -9,9 +9,19 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemBarberBinding
 import com.example.barberapp.model.Constants.BASE_IMAGE_URL
 import com.example.barberapp.model.remote.response.barber.Barber
+import com.example.barberapp.viewmodel.AppointmentViewModel
 
-class BarberListAdapter(private val barberList: List<Barber>): RecyclerView.Adapter<BarberListAdapter.BarberListViewHolder>() {
+class BarberListAdapter(private val barberList: List<Barber>, private val viewModel: AppointmentViewModel): RecyclerView.Adapter<BarberListAdapter.BarberListViewHolder>() {
     private lateinit var binding: ItemBarberBinding
+    private lateinit var itemClickListener: ItemClickListener
+
+    interface ItemClickListener {
+        fun onClick(view: View, position: Int)
+    }
+
+    fun setOnItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
 
     inner class BarberListViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         fun bind(barber: Barber) {
@@ -37,6 +47,9 @@ class BarberListAdapter(private val barberList: List<Barber>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: BarberListViewHolder, position: Int) {
         holder.bind(barberList[position])
+        holder.itemView.setOnClickListener {
+            viewModel.selectedBarberId.postValue(barberList[position].barberId)
+        }
     }
 
     override fun getItemCount(): Int {

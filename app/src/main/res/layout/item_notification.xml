@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_message"
+            android:src="@drawable/ic_baseline_mail_outline_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_message"
+            tools:text="We are awarded with best salon of the year thanx for all of you trusting on us"
+            android:textSize="@dimen/_17sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_date"
+            tools:text="2020-11-30 18:11:31"
+            android:maxLines="1"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/img_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

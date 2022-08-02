@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.barberapp.databinding.FragmentHomeBinding
-import com.example.barberapp.view.appointment.BarberListActivity
+import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.service.ServiceActivity
 
 class HomeFragment : Fragment() {
@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpEvents() {
         binding.apply {
-            btnReserve.setOnClickListener { startActivity(Intent(context, BarberListActivity::class.java)) }
+            btnReserve.setOnClickListener { startActivity(Intent(context, AppointmentActivity::class.java)) }
             btnService.setOnClickListener { startActivity(Intent(context, ServiceActivity::class.java)) }
             btnHours.setOnClickListener {  }
             btnMore.setOnClickListener {  }

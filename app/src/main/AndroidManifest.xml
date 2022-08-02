@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BarberApp"
         tools:targetApi="31">
         <activity
+            android:name=".view.appointment.AppointmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.appointment.BarberListActivity"
             android:exported="false" />
         <activity

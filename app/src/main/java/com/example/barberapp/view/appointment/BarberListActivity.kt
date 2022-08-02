@@ -29,7 +29,7 @@ class BarberListActivity : AppCompatActivity() {
 
     private fun setUpView() {
         viewModel.barbersResponse.observe(this@BarberListActivity) {
-            val adapter = BarberListAdapter(it.barbers)
+            val adapter = BarberListAdapter(it.barbers, viewModel)
             binding.recyclerviewBarbers.layoutManager = GridLayoutManager(this@BarberListActivity, 2)
             binding.recyclerviewBarbers.adapter = adapter
         }
