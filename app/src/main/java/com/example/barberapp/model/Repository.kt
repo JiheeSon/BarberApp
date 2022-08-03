@@ -23,8 +23,9 @@ class Repository(private val apiService: ApiService) {
     val loginResponse = MutableLiveData<LoginResponse>()
     val barbersResponse = MutableLiveData<BarbersResponse>()
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
-    val serviceResponse = MutableLiveData<ServiceResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
+
+    suspend fun getAlert() = apiService.getAlert()
 
     fun getDashboard() {
         isProcessing.set(true)
@@ -59,9 +60,9 @@ class Repository(private val apiService: ApiService) {
         })
     }
 
-    suspend fun getServiceByCategory(id: String) {
+    suspend fun getServiceByCategory(id: String): ServiceResponse {
         isProcessing.set(true)
-        val call = apiService.getServiceByCategory(id)
+        return apiService.getServiceByCategory(id)
     }
 
     fun getServiceCategory() {

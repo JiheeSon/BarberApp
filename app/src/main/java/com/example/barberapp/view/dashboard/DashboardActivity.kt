@@ -39,7 +39,8 @@ class DashboardActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.menu_notification) {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, HomeFragment())
+                    .replace(R.id.fragment, AlertFragment())
+                    .addToBackStack(null)
                     .commit()
                 true
             } else {
@@ -102,5 +103,9 @@ class DashboardActivity : AppCompatActivity() {
         }else{
             super.onBackPressed()
         }
+    }
+
+    fun openDrawer() {
+        binding.layoutDashboard.openDrawer(GravityCompat.START)
     }
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentHomeBinding
 import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.service.ServiceActivity
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        initToolBar()
         //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         return binding.root
     }
@@ -59,7 +61,16 @@ class HomeFragment : Fragment() {
             btnReserve.setOnClickListener { startActivity(Intent(context, AppointmentActivity::class.java)) }
             btnService.setOnClickListener { startActivity(Intent(context, ServiceActivity::class.java)) }
             btnHours.setOnClickListener {  }
-            btnMore.setOnClickListener {  }
+            btnMore.setOnClickListener { (activity as DashboardActivity).openDrawer() }
+        }
+    }
+
+    private fun initToolBar() {
+        val toolbar = (activity as DashboardActivity).supportActionBar
+        toolbar?.apply {
+            setTitle("My Salon")
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
         }
     }
 

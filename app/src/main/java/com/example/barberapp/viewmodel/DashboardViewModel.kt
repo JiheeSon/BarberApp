@@ -4,11 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.barberapp.model.Repository
+import com.example.barberapp.model.remote.response.AlertResponse
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DashboardViewModel(private val repository: Repository): ViewModel() {
 
@@ -18,13 +22,37 @@ class DashboardViewModel(private val repository: Repository): ViewModel() {
     val barbersResponse: LiveData<BarbersResponse> = repository.barbersResponse
     val categoryResponse: LiveData<ServiceCategoryResponse> = repository.serviceCategoryResponse
 
+    val notiError = MutableLiveData<String>()
+    val processing = MutableLiveData<Boolean>()
+    val alertLiveData = MutableLiveData<AlertResponse>()
+
     fun getDashboard() {
         repository.getDashboard()
         repository.getBarbers()
         repository.getServiceCategory()
+        preloadData()
     }
 
     fun preloadData() {
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            try {
+                processing.postValue(true)
+                val response = repository.getAlert()
+                processing.postValue(false)
+                if (!response.isSuccessful) {
+                    notiError.postValue("Failed to load data.Error code: ${response.code()}")
+                    return@launch
+                }
+                response.body()?.let {
+                    alertLiveData.postValue(it)
+                }
+            }catch (e: Exception) {
+                notiError.postValue("Error is : $e")
+                e.printStackTrace()
+                processing.postValue(false)
+            }
+        }
         //hours
         //notification
 
