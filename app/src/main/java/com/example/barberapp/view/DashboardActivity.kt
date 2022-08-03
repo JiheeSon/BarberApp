@@ -7,18 +7,46 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityDashboardBinding
+import com.example.barberapp.model.Repository
+import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.view.appointment.BarberListFragment
+import com.example.barberapp.viewmodel.DashboardVMFactory
+import com.example.barberapp.viewmodel.DashboardViewModel
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
+    private lateinit var viewModel: DashboardViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment, HomeFragment())
+            .commit()
+
+        setUpViewModel()
         initNavBar()
+        binding.toolbar.setOnMenuItemClickListener {
+            if (it.itemId == R.id.menu_notification) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, HomeFragment())
+                    .commit()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun setUpViewModel() {
+        val vmFactory = DashboardVMFactory(Repository(ApiService.getInstance()))
+        viewModel = ViewModelProvider(this@DashboardActivity, vmFactory)[DashboardViewModel::class.java]
+        viewModel.getDashboard()
     }
 
     private fun initNavBar() {

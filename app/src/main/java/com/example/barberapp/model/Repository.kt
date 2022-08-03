@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.model.remote.request.LoginRequest
 import com.example.barberapp.model.remote.request.RegistrationRequest
+import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
@@ -23,6 +24,40 @@ class Repository(private val apiService: ApiService) {
     val barbersResponse = MutableLiveData<BarbersResponse>()
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val serviceResponse = MutableLiveData<ServiceResponse>()
+    val dashboardResponse = MutableLiveData<DashboardResponse>()
+
+    fun getDashboard() {
+        isProcessing.set(true)
+        val call = apiService.getDashboard()
+        call.enqueue(object : Callback<DashboardResponse> {
+            override fun onResponse(
+                call: Call<DashboardResponse>,
+                response: Response<DashboardResponse>
+            ) {
+                isProcessing.set(false)
+                if(!response.isSuccessful) {
+                    error.postValue("Failed to login. Error code: ${response.code()}")
+                } else {
+                    val apiResponse = response.body()
+                    if (apiResponse == null) {
+                        error.postValue("Empty response. Please retry.")
+                    } else {
+                        if (apiResponse.status == 0) {
+                            dashboardResponse.postValue(apiResponse)
+                        } else {
+                            error.postValue(apiResponse.message)
+                        }
+                    }
+                }
+            }
+            override fun onFailure(call: Call<DashboardResponse>, t: Throwable) {
+                isProcessing.set(false)
+                t.printStackTrace()
+                error.postValue("Error is : ${t.toString()}.\n\nPlease retry.")
+            }
+
+        })
+    }
 
     suspend fun getServiceByCategory(id: String) {
         isProcessing.set(true)

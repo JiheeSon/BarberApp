@@ -2,6 +2,7 @@ package com.example.barberapp.model.remote
 
 import com.example.barberapp.model.remote.request.LoginRequest
 import com.example.barberapp.model.remote.request.RegistrationRequest
+import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
@@ -38,4 +39,7 @@ interface ApiService {
     suspend fun getServiceByCategory(
         @Path("category_id") id: String
     ): ServiceResponse
+
+    @GET("/user/dashboard")
+    fun getDashboard(): Call<DashboardResponse>
 }
