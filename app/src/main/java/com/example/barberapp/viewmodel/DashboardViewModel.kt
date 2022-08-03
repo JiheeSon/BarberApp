@@ -7,15 +7,21 @@ import androidx.lifecycle.ViewModel
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
+import com.example.barberapp.model.remote.response.barber.BarbersResponse
+import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 
 class DashboardViewModel(private val repository: Repository): ViewModel() {
 
     val error: LiveData<String> = repository.error
     val isProcessing = repository.isProcessing
     val dashboardResponse: LiveData<DashboardResponse> = repository.dashboardResponse
+    val barbersResponse: LiveData<BarbersResponse> = repository.barbersResponse
+    val categoryResponse: LiveData<ServiceCategoryResponse> = repository.serviceCategoryResponse
 
     fun getDashboard() {
         repository.getDashboard()
+        repository.getBarbers()
+        repository.getServiceCategory()
     }
 
     fun preloadData() {

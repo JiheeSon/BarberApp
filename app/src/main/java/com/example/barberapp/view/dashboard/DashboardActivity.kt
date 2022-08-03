@@ -1,4 +1,4 @@
-package com.example.barberapp.view
+package com.example.barberapp.view.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,7 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityDashboardBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
-import com.example.barberapp.view.appointment.BarberListFragment
+import com.example.barberapp.view.LoginActivity
 import com.example.barberapp.viewmodel.DashboardVMFactory
 import com.example.barberapp.viewmodel.DashboardViewModel
 
@@ -31,6 +31,11 @@ class DashboardActivity : AppCompatActivity() {
 
         setUpViewModel()
         initNavBar()
+        setUpNotificationEvent()
+
+    }
+
+    private fun setUpNotificationEvent() {
         binding.toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.menu_notification) {
                 supportFragmentManager.beginTransaction()

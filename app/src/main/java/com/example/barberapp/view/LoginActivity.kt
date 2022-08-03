@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
@@ -12,6 +11,7 @@ import com.example.barberapp.databinding.ActivityLoginBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.model.remote.response.LoginResponse
+import com.example.barberapp.view.dashboard.DashboardActivity
 import com.example.barberapp.viewmodel.*
 import com.google.firebase.messaging.FirebaseMessaging
 

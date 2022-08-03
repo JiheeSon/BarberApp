@@ -1,22 +1,16 @@
-package com.example.barberapp.view
+package com.example.barberapp.view.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.barberapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.databinding.FragmentHomeBinding
-import com.example.barberapp.model.Repository
-import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.service.ServiceActivity
-import com.example.barberapp.viewmodel.AppointmentViewModel
-import com.example.barberapp.viewmodel.DashboardVMFactory
 import com.example.barberapp.viewmodel.DashboardViewModel
 
 class HomeFragment : Fragment() {
@@ -27,7 +21,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         //binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         return binding.root
@@ -37,6 +30,20 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpViewModel()
         setUpEvents()
+        setUpViews()
+    }
+
+    private fun setUpViews() {
+        viewModel.barbersResponse.observe(requireActivity()) {
+            val adapter = BarberProfileAdapter(it.barbers)
+            binding.recyclerviewBarbers.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            binding.recyclerviewBarbers.adapter = adapter
+        }
+
+        viewModel.categoryResponse.observe(requireActivity()) {
+            val adapter = CategoryAdapter(it.serviceCategories)
+            binding.viewpagerService.adapter = adapter
+        }
     }
 
     private fun setUpViewModel() {
