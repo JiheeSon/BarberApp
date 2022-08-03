@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         viewModel.dashboardResponse.observe(requireActivity()){
             binding.isOpen = it.isShopOpened
         }
+
     }
 
     private fun setUpEvents() {

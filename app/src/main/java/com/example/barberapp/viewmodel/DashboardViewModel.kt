@@ -20,9 +20,9 @@ class DashboardViewModel(private val repository: Repository): ViewModel() {
 
     fun preloadData() {
         //hours
-        //data
+        //notification
 
-        //service
+        //barber
         //hot deal
     }
 }

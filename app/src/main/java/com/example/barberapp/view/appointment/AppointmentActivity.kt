@@ -19,6 +19,8 @@ class AppointmentActivity : AppCompatActivity() {
         binding = ActivityAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment, BarberListFragment())
             .commit()
