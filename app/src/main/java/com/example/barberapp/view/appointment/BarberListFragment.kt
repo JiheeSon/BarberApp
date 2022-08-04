@@ -45,7 +45,9 @@ class BarberListFragment : Fragment() {
 
     private fun setUpEvent() {
         viewModel.selectedBarberId.observe(requireActivity()) {
-            Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, BarberServiceFragment())
+                .commit()
         }
     }
 

@@ -8,11 +8,14 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
+import com.example.barberapp.BuildConfig
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityDashboardBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.view.LoginActivity
+import com.example.barberapp.view.appointment.AppointmentActivity
+import com.example.barberapp.view.service.ServiceActivity
 import com.example.barberapp.viewmodel.DashboardVMFactory
 import com.example.barberapp.viewmodel.DashboardViewModel
 
@@ -61,16 +64,35 @@ class DashboardActivity : AppCompatActivity() {
         binding.navDrawer.setNavigationItemSelectedListener { menuItems ->
             binding.layoutDashboard.closeDrawer(GravityCompat.START)
             when (menuItems.itemId) {
-                R.id.nav_service -> {Toast.makeText(this, "service", Toast.LENGTH_SHORT).show()}
+                R.id.nav_book -> { startActivity(Intent(this@DashboardActivity, AppointmentActivity::class.java)) }
+                R.id.nav_service -> { startActivity(Intent(this@DashboardActivity, ServiceActivity::class.java)) }
                 R.id.nav_logout -> {
-                    Toast.makeText(this, "log out", Toast.LENGTH_SHORT).show()
                     logoutUser()
                     startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
                     finish()
                 }
+                R.id.nav_share -> {
+                    shareApp()
+                }
+                R.id.nav_about -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AboutAppFragment())
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
             true
         }
+    }
+
+    private fun shareApp() {
+        val appId = BuildConfig.APPLICATION_ID
+        val text = "https://play.google.com/store/apps/details?id=$appId"
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share the app!")
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text)
+        startActivity(shareIntent)
     }
 
     private fun logoutUser() {
