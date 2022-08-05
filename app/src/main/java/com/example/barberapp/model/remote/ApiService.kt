@@ -6,6 +6,7 @@ import com.example.barberapp.model.remote.response.AlertResponse
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
+import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
@@ -47,4 +48,7 @@ interface ApiService {
 
     @GET("/alert/getList")
     suspend fun getAlert(): Response<AlertResponse>
+
+    @POST("/barber/getBarberServices1")
+    suspend fun getBarberServices(): Response<BarberServiceResponse>
 }

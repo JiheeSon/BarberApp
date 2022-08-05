@@ -27,4 +27,6 @@
     <string name="about">About</string>
     <string name="logout">Logout</string>
     <string name="select_barber">Select Barber</string>
+    <string name="change_barber">Change barber</string>
+    <string name="next">Next</string>
 </resources>

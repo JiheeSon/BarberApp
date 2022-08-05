@@ -16,14 +16,14 @@
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="80dp"
-            android:layout_height="80dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_service_name"
             tools:text="Blowout"
-            android:textSize="@dimen/_20sp"
-            android:padding="@dimen/_10dp"
+            android:textSize="@dimen/_17sp"
+            android:layout_marginStart="@dimen/_10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_service"
             android:layout_width="wrap_content"
@@ -32,7 +32,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_duration"
             tools:text="15 Minutes"
-            android:padding="@dimen/_5dp"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_10dp"
             android:drawableStart="@drawable/ic_baseline_access_alarm_24"
             app:layout_constraintBottom_toBottomOf="@id/img_service"
             app:layout_constraintStart_toEndOf="@id/img_service"
@@ -41,8 +42,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_cost"
-            tools:text="$ 15"
-            android:padding="@dimen/_5dp"
+            tools:text="15"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="@id/guideline"
             app:layout_constraintBottom_toBottomOf="parent"
             android:drawableStart="@drawable/ic_baseline_attach_money_24"

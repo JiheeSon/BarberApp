@@ -3,12 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_16dp"
     tools:context=".view.appointment.BarberServiceFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        tools:listitem="@layout/item_barber_service_section"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_continue"
+        android:layout_height="@dimen/_0dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_change_barber"
+        android:text="@string/change_barber"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@color/main_red"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_continue"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/main_sky_blue"
+        app:layout_constraintStart_toEndOf="@id/btn_change_barber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

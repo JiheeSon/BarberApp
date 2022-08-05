@@ -25,6 +25,7 @@ class Repository(private val apiService: ApiService) {
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
 
+    suspend fun getBarberServices() = apiService.getBarberServices()
     suspend fun getAlert() = apiService.getAlert()
 
     fun getDashboard() {

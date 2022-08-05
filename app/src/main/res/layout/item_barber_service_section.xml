@@ -8,6 +8,9 @@
     <TextView
         android:id="@+id/text_category"
         tools:text="Haircuts"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
+        android:textSize="@dimen/_20sp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
