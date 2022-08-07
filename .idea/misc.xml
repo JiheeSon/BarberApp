@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_blue_boundary.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_boundary.xml" value="0.226" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_category.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_edit_text.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_framelayout_dash.xml" value="0.205" />
@@ -17,9 +18,15 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.226" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_cleaning_services_24.xml" value="0.205" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_content_cut_24.xml" value="0.205" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.226" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_edit_calendar_24.xml" value="0.226" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_insert_invitation_24.xml" value="0.205" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_more_time_24.xml" value="0.226" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.1515" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.1515" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.205" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.137" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/selector_toggle.xml" value="0.1505" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/splash_background.xml" value="0.176" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_appointment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_barber_list.xml" value="0.264" />
@@ -34,6 +41,7 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_barber_list.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_barber_service.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_time_select.xml" value="0.2" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/header_nav.xml" value="0.365625" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_barber.xml" value="0.264" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_barber_profile.xml" value="0.365625" />

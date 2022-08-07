@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentBarberServiceBinding
-import com.example.barberapp.view.dashboard.DashboardActivity
+import com.example.barberapp.view.appointment.adapter.ServiceSectionAdapter
 import com.example.barberapp.viewmodel.AppointmentViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class BarberServiceFragment : Fragment() {
     private lateinit var binding: FragmentBarberServiceBinding
@@ -38,14 +39,49 @@ class BarberServiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView()
+        setUpEvent()
+    }
+
+    private fun setUpEvent() {
+        binding.btnChangeBarber.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        binding.btnContinue.setOnClickListener {
+            Log.i("jihee", "hello")
+            Log.i("jihee33", viewModel.selectedServices.value.toString())
+
+            if (viewModel.selectedServices.value == null || viewModel.selectedServices.value!!.isEmpty()) {
+                Snackbar.make(binding.root, "Please select at least on service to proceed", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Confirm") {
+                    }
+                    .show()
+            } else {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, TimeSelectFragment())
+                    //.addToBackStack(null)
+                    .commit()
+            }
+//            viewModel.selectedServices.observe(requireActivity()) {
+//                Log.i("jihee", it.toString())
+//            }
+//            if (viewModel.selectedServices.value?.isNotEmpty()!!) {
+//                requireActivity().supportFragmentManager.beginTransaction()
+//                    .replace(R.id.fragment, TimeSelectFragment())
+//                    //.addToBackStack(null)
+//                    .commit()
+//            } else {
+//                Snackbar.make(binding.root, "Please select at least on service to proceed", Snackbar.LENGTH_INDEFINITE)
+//                    .setAction("Confirm") {
+//                    }
+//                    .show()
+//            }
+        }
     }
 
     private fun setUpView() {
-        Log.i("jihee", "hello")
         viewModel.barberServiceCategories.observe(requireActivity()) {
-            Log.i("jihee", viewModel.barberServiceItems.value.toString())
-            Log.i("jihee", viewModel.barberServiceItems.value!!.size.toString())
-            val adapter = ServiceSectionAdapter(it, viewModel.barberServiceItems.value!!)
+            val adapter = ServiceSectionAdapter(it, viewModel.barberServiceItems.value!!, viewModel)
             binding.recyclerview.layoutManager = LinearLayoutManager(context)
             binding.recyclerview.adapter = adapter
         }

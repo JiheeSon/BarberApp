@@ -50,13 +50,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatRadioButton
+        <androidx.appcompat.widget.AppCompatToggleButton
             android:id="@+id/btn_select"
+            android:background="@drawable/selector_toggle"
+            android:textOn=""
+            android:textOff=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

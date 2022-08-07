@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityBarberListBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.view.appointment.adapter.BarberListAdapter
 import com.example.barberapp.viewmodel.AppointmentVMFactory
 import com.example.barberapp.viewmodel.AppointmentViewModel
-import com.example.barberapp.viewmodel.AuthVMFactory
-import com.example.barberapp.viewmodel.AuthViewModel
 
 class BarberListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBarberListBinding

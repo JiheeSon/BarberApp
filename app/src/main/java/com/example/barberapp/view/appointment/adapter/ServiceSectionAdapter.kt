@@ -1,26 +1,30 @@
-package com.example.barberapp.view.appointment
+package com.example.barberapp.view.appointment.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemBarberServiceSectionBinding
 import com.example.barberapp.model.remote.response.barber.Service
+import com.example.barberapp.viewmodel.AppointmentViewModel
 
-class ServiceSectionAdapter(private val categories: ArrayList<String>, private val services: ArrayList<ArrayList<Service>>): RecyclerView.Adapter<ServiceSectionAdapter.ServiceSectionViewHolder>() {
+class ServiceSectionAdapter(private val categories: ArrayList<String>, private val services: ArrayList<ArrayList<Service>>, private val viewModel: AppointmentViewModel): RecyclerView.Adapter<ServiceSectionAdapter.ServiceSectionViewHolder>() {
     private lateinit var binding: ItemBarberServiceSectionBinding
 
     inner class ServiceSectionViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         fun bind(idx: Int) {
             view.findViewById<TextView>(R.id.text_category).text = categories[idx]
             //binding.textCategory.text = categories[idx]
-            val adapter = ServiceItemAdapter(view.context, services[idx])
-            view.findViewById<ListView>(R.id.listview).adapter = adapter
+            val adapter = ServiceItemAdapter(services[idx], viewModel)
+            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview_services)
+            recyclerView.layoutManager = LinearLayoutManager(view.context)
+            recyclerView.adapter = adapter
             //binding.listview.adapter = adapter
-            setListViewHeight(binding.listview)
+            //setListViewHeight(binding.listview)
         }
     }
 

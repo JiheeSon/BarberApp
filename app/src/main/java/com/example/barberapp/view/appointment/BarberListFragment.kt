@@ -1,18 +1,16 @@
 package com.example.barberapp.view.appointment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentBarberListBinding
 import com.example.barberapp.model.remote.response.barber.Barber
+import com.example.barberapp.view.appointment.adapter.BarberListAdapter
 import com.example.barberapp.viewmodel.AppointmentViewModel
 
 class BarberListFragment : Fragment() {
@@ -47,6 +45,7 @@ class BarberListFragment : Fragment() {
         viewModel.selectedBarberId.observe(requireActivity()) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment, BarberServiceFragment())
+                //.addToBackStack(null)
                 .commit()
         }
     }
@@ -56,7 +55,6 @@ class BarberListFragment : Fragment() {
             adapter = BarberListAdapter(it.barbers, viewModel)
             binding.recyclerviewBarbers.layoutManager = GridLayoutManager(context, 2)
             binding.recyclerviewBarbers.adapter = adapter
-
         }
     }
 }

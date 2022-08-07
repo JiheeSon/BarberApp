@@ -1,4 +1,4 @@
-package com.example.barberapp.view.appointment
+package com.example.barberapp.view.appointment.adapter
 
 import android.view.LayoutInflater
 import android.view.View

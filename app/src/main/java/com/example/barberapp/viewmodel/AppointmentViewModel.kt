@@ -26,6 +26,7 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
     val barberServicesByCategory = MutableLiveData<HashMap<String, ArrayList<Service>>>()
 
     val selectedBarberId = MutableLiveData<Int>()
+    val selectedServices = MutableLiveData<ArrayList<Service>>()
 
     fun getBarberList() {
         repository.getBarbers()
@@ -71,6 +72,8 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
             //barberServicesByCategory.postValue(map)
             barberServiceCategories.postValue(categories)
             barberServiceItems.postValue(items)
+            Log.i("jihee", barberServiceCategories.value.toString())
+            Log.i("jihee", barberServiceItems.value.toString())
         }
     }
 
@@ -90,5 +93,19 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
             e.printStackTrace()
             processing.postValue(false)
         }
+    }
+
+    fun onServiceCheckChange(isChecked: Boolean, selected: Service) {
+        if (selectedServices.value == null) {
+            selectedServices.value = ArrayList<Service>()
+        }
+
+        if (isChecked) {
+            selectedServices.value!!.add(selected)
+        } else {
+            selectedServices.value!!.remove(selected)
+        }
+
+        Log.i("jihee2", selectedServices.value.toString())
     }
 }
