@@ -41,7 +41,7 @@ interface ApiService {
     @GET("/service/category/{category_id}")
     suspend fun getServiceByCategory(
         @Path("category_id") id: String
-    ): ServiceResponse
+    ): Response<ServiceResponse>
 
     @GET("/user/dashboard")
     fun getDashboard(): Call<DashboardResponse>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_background"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_main"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/img_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="@dimen/_120dp"
+        android:layout_height="@dimen/_120dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_title"
+        tools:text="Relaxation"
+        android:textSize="@dimen/_25sp"
+        android:textStyle="bold"
+        android:padding="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/img_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/duration"
+        android:text="@string/duration"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_duration"
+        tools:text="45 Minutes"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintStart_toEndOf="@id/duration"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rate"
+        android:text="@string/rate"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_rate"
+        tools:text="$ 500"
+        android:textSize="@dimen/_17sp"
+        android:textStyle="bold"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintStart_toEndOf="@id/rate"
+        app:layout_constraintTop_toBottomOf="@id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        android:text="@string/description"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_description"
+        tools:text="Hello this os kivnifb nnc kfck mkkf "
+        android:textSize="@dimen/_17sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_close"
+        android:text="@string/close"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/main_green"
+        android:layout_marginTop="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

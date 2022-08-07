@@ -33,4 +33,8 @@
     <string name="next">Next</string>
     <string name="appointment_date">Appointment Date</string>
     <string name="appointment_time">Appointment Time</string>
+    <string name="close">Close</string>
+    <string name="description">Description</string>
+    <string name="rate">Rate</string>
+    <string name="duration">Duration</string>
 </resources>

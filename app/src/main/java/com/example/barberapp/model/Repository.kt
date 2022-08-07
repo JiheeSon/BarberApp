@@ -61,7 +61,7 @@ class Repository(private val apiService: ApiService) {
         })
     }
 
-    suspend fun getServiceByCategory(id: String): ServiceResponse {
+    suspend fun getServiceByCategory(id: String): Response<ServiceResponse> {
         isProcessing.set(true)
         return apiService.getServiceByCategory(id)
     }

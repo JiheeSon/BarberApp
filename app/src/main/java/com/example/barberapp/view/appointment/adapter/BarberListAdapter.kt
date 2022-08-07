@@ -13,15 +13,6 @@ import com.example.barberapp.viewmodel.AppointmentViewModel
 
 class BarberListAdapter(private val barberList: List<Barber>, private val viewModel: AppointmentViewModel): RecyclerView.Adapter<BarberListAdapter.BarberListViewHolder>() {
     private lateinit var binding: ItemBarberBinding
-    private lateinit var itemClickListener: ItemClickListener
-
-    interface ItemClickListener {
-        fun onClick(view: View, position: Int)
-    }
-
-    fun setOnItemClickListener(itemClickListener: ItemClickListener) {
-        this.itemClickListener = itemClickListener
-    }
 
     inner class BarberListViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         fun bind(barber: Barber) {

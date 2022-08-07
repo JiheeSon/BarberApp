@@ -15,4 +15,5 @@
     <dimen name="_7dp">7dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_70dp">70dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
 </resources>
