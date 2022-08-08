@@ -13,6 +13,7 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityDashboardBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.view.AppointmentListActivity
 import com.example.barberapp.view.LoginActivity
 import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.service.ServiceActivity
@@ -65,6 +66,7 @@ class DashboardActivity : AppCompatActivity() {
             binding.layoutDashboard.closeDrawer(GravityCompat.START)
             when (menuItems.itemId) {
                 R.id.nav_book -> { startActivity(Intent(this@DashboardActivity, AppointmentActivity::class.java)) }
+                R.id.nav_appointments -> { startActivity(Intent(this@DashboardActivity, AppointmentListActivity::class.java)) }
                 R.id.nav_service -> { startActivity(Intent(this@DashboardActivity, ServiceActivity::class.java)) }
                 R.id.nav_logout -> {
                     logoutUser()

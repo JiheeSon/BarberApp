@@ -39,4 +39,5 @@
     <string name="duration">Duration</string>
     <string name="barber">Barber</string>
     <string name="cancel">Cancel</string>
+    <string name="my_appointments">My Appointments</string>
 </resources>

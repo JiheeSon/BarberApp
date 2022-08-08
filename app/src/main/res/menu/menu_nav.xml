@@ -6,6 +6,10 @@
             android:icon="@drawable/ic_baseline_insert_invitation_24"
             android:title="@string/book_appointment" />
         <item
+            android:id="@+id/nav_appointments"
+            android:icon="@drawable/ic_baseline_history_edu_24"
+            android:title="@string/my_appointments"/>
+        <item
             android:id="@+id/nav_service"
             android:icon="@drawable/ic_baseline_cleaning_services_24"
             android:title="@string/our_services" />
