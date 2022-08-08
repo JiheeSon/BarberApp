@@ -8,6 +8,7 @@ import com.example.barberapp.model.remote.request.RegistrationRequest
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
+import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
@@ -24,6 +25,45 @@ class Repository(private val apiService: ApiService) {
     val barbersResponse = MutableLiveData<BarbersResponse>()
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
+
+    val appointmentError = MutableLiveData<String>()
+    val appointmentResponse = MutableLiveData<AppointmentResponse>()
+    val appointmentProcessing = MutableLiveData<Boolean>()
+    fun bookAppointment(params: HashMap<String, String>) {
+        isProcessing.set(true)
+        appointmentProcessing.postValue(true)
+        val call = apiService.bookAppointment(params)
+        call.enqueue(object : Callback<AppointmentResponse> {
+            override fun onResponse(
+                call: Call<AppointmentResponse>,
+                response: Response<AppointmentResponse>
+            ) {
+                isProcessing.set(false)
+                appointmentProcessing.postValue(false)
+                if(!response.isSuccessful) {
+                    appointmentError.postValue("Failed to book. Error code: ${response.code()}")
+                } else {
+                    val apiResponse = response.body()
+                    if (apiResponse == null) {
+                        appointmentError.postValue("Empty response. Please retry.")
+                    } else {
+                        if (apiResponse.status == 0) {
+                            appointmentResponse.postValue(apiResponse)
+                        } else {
+                            appointmentError.postValue(apiResponse.message)
+                        }
+                    }
+                }
+            }
+            override fun onFailure(call: Call<AppointmentResponse>, t: Throwable) {
+                isProcessing.set(false)
+                appointmentProcessing.postValue(false)
+                t.printStackTrace()
+                appointmentError.postValue("Error is : ${t.toString()}.\n\nPlease retry.")
+            }
+
+        })
+    }
 
     suspend fun getBarberServices() = apiService.getBarberServices()
     suspend fun getAlert() = apiService.getAlert()

@@ -6,6 +6,7 @@ import com.example.barberapp.model.remote.response.AlertResponse
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
+import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
@@ -32,23 +33,34 @@ interface ApiService {
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
 
+
     @GET("/barber/getBarbers")
     fun getBarbers(): Call<BarbersResponse>
 
+
     @GET("/service/getServiceCategory")
     fun getServiceCategory(): Call<ServiceCategoryResponse>
+
 
     @GET("/service/category/{category_id}")
     suspend fun getServiceByCategory(
         @Path("category_id") id: String
     ): Response<ServiceResponse>
 
+
     @GET("/user/dashboard")
     fun getDashboard(): Call<DashboardResponse>
+
 
     @GET("/alert/getList")
     suspend fun getAlert(): Response<AlertResponse>
 
+
     @POST("/barber/getBarberServices1")
     suspend fun getBarberServices(): Response<BarberServiceResponse>
+
+    @POST("/appointment/book")
+    fun bookAppointment(
+        @QueryMap params: HashMap<String, String>
+    ): Call<AppointmentResponse>
 }

@@ -1,11 +1,13 @@
 package com.example.barberapp.viewmodel
 
 import android.util.Log
+import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.barberapp.model.Repository
+import com.example.barberapp.model.remote.response.barber.Barber
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.Service
 import kotlinx.coroutines.Dispatchers
@@ -23,10 +25,22 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
 
     val barberServiceCategories = MutableLiveData<ArrayList<String>>()
     val barberServiceItems = MutableLiveData<ArrayList<ArrayList<Service>>>()
-    val barberServicesByCategory = MutableLiveData<HashMap<String, ArrayList<Service>>>()
 
-    val selectedBarberId = MutableLiveData<Int>()
+    val selectedBarber = MutableLiveData<Barber>()
     val selectedServices = MutableLiveData<ArrayList<Service>>()
+    val totalDuration = MutableLiveData<Double>()
+    val totalCost = MutableLiveData<Double>()
+    val appointmentDate = MutableLiveData<String>()
+    val startTime = MutableLiveData<String>()
+    val endTime = MutableLiveData<String>()
+
+
+    val appointmentResponse = repository.appointmentResponse
+    val appointmentError = repository.appointmentError
+    val appointmentProcessing = repository.appointmentProcessing
+    fun bookAppointment(params: HashMap<String, String>) {
+        repository.bookAppointment(params)
+    }
 
     fun getBarberList() {
         repository.getBarbers()
@@ -39,7 +53,7 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
                 getBarberServices()
             }
 
-            withContext(Dispatchers.IO) {
+            launch(Dispatchers.IO) {
                 setUpServiceData()
             }
         }
@@ -47,7 +61,6 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
 
     private fun setUpServiceData() {
         val services = barberServiceResponse.value?.services
-        val map: HashMap<String, ArrayList<Service>> = HashMap()
 
         val categories = ArrayList<String>()
         val items = ArrayList<ArrayList<Service>>()
@@ -72,8 +85,8 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
             //barberServicesByCategory.postValue(map)
             barberServiceCategories.postValue(categories)
             barberServiceItems.postValue(items)
-            Log.i("jihee", barberServiceCategories.value.toString())
-            Log.i("jihee", barberServiceItems.value.toString())
+//            Log.i("jihee", barberServiceCategories.value.toString())
+//            Log.i("jihee", barberServiceItems.value.toString())
         }
     }
 
@@ -105,7 +118,19 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
         } else {
             selectedServices.value!!.remove(selected)
         }
+    }
 
-        Log.i("jihee2", selectedServices.value.toString())
+    fun computeTotalDurationAndCost() {
+        val services = selectedServices.value
+        var duration = 0.0
+        var cost = 0.0
+        if (services != null) {
+            for (service in services) {
+                duration += service.duration
+                cost += service.cost
+            }
+        }
+        totalDuration.postValue(duration)
+        totalCost.postValue(cost)
     }
 }

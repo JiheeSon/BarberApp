@@ -42,7 +42,7 @@ class BarberListFragment : Fragment() {
     }
 
     private fun setUpEvent() {
-        viewModel.selectedBarberId.observe(requireActivity()) {
+        viewModel.selectedBarber.observe(requireActivity()) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment, BarberServiceFragment())
                 //.addToBackStack(null)

@@ -1,7 +1,6 @@
 package com.example.barberapp.view.appointment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,15 +47,13 @@ class BarberServiceFragment : Fragment() {
         }
 
         binding.btnContinue.setOnClickListener {
-            Log.i("jihee", "hello")
-            Log.i("jihee33", viewModel.selectedServices.value.toString())
-
             if (viewModel.selectedServices.value == null || viewModel.selectedServices.value!!.isEmpty()) {
                 Snackbar.make(binding.root, "Please select at least on service to proceed", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Confirm") {
                     }
                     .show()
             } else {
+                viewModel.computeTotalDurationAndCost()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment, TimeSelectFragment())
                     //.addToBackStack(null)

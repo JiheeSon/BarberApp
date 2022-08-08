@@ -37,4 +37,6 @@
     <string name="description">Description</string>
     <string name="rate">Rate</string>
     <string name="duration">Duration</string>
+    <string name="barber">Barber</string>
+    <string name="cancel">Cancel</string>
 </resources>

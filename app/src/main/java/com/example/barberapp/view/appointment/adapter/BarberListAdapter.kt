@@ -37,9 +37,10 @@ class BarberListAdapter(private val barberList: List<Barber>, private val viewMo
     }
 
     override fun onBindViewHolder(holder: BarberListViewHolder, position: Int) {
-        holder.bind(barberList[position])
+        val barber = barberList[position]
+        holder.bind(barber)
         holder.itemView.setOnClickListener {
-            viewModel.selectedBarberId.postValue(barberList[position].barberId)
+            viewModel.selectedBarber.postValue(barber)
         }
     }
 
