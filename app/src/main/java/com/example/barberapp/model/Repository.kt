@@ -65,6 +65,7 @@ class Repository(private val apiService: ApiService) {
         })
     }
 
+    suspend fun getContacts() = apiService.getContacts()
     suspend fun getBarberServices() = apiService.getBarberServices()
     suspend fun getAlert() = apiService.getAlert()
 

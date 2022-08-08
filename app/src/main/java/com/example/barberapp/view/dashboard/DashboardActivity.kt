@@ -68,10 +68,11 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.nav_book -> { startActivity(Intent(this@DashboardActivity, AppointmentActivity::class.java)) }
                 R.id.nav_appointments -> { startActivity(Intent(this@DashboardActivity, AppointmentListActivity::class.java)) }
                 R.id.nav_service -> { startActivity(Intent(this@DashboardActivity, ServiceActivity::class.java)) }
-                R.id.nav_logout -> {
-                    logoutUser()
-                    startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
-                    finish()
+                R.id.nav_reach -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, ReachFragment())
+                        .addToBackStack(null)
+                        .commit()
                 }
                 R.id.nav_share -> {
                     shareApp()
@@ -81,6 +82,11 @@ class DashboardActivity : AppCompatActivity() {
                         .replace(R.id.fragment, AboutAppFragment())
                         .addToBackStack(null)
                         .commit()
+                }
+                R.id.nav_logout -> {
+                    logoutUser()
+                    startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
+                    finish()
                 }
             }
             true

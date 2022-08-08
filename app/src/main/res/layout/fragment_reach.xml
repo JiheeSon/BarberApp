@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.dashboard.ReachFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contact_person"
+        android:text="Contact Person"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_person"
+        tools:text="David Miller"
+        android:textSize="@dimen/_17sp"
+        android:textColor="@color/main_green"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/contact_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/shop_time"
+        android:text="Shop Time"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_time"
+        tools:text="Morning 8 to evening 9:30"
+        android:textColor="@color/main_green"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/shop_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contact_numer"
+        android:text="Contact Number"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_number"
+        tools:text="940531465"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/contact_numer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_call"
+        android:src="@drawable/ic_baseline_call_24"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_message"
+        app:layout_constraintTop_toTopOf="@id/contact_numer"
+        app:layout_constraintBottom_toBottomOf="@id/text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_message"
+        android:src="@drawable/ic_baseline_mail_outline_24"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/contact_numer"
+        app:layout_constraintBottom_toBottomOf="@id/text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/shop_address"
+        android:text="Shop Address"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_address"
+        tools:text="Near Dadar railway station, Dadar, Mumabi"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/shop_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_location"
+        android:src="@drawable/ic_baseline_location_on_24"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/shop_address"
+        app:layout_constraintBottom_toBottomOf="@id/text_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/facebook"
+        android:text="Facebook"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_facebook"
+        tools:text="https:www.facebook.com"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_link"
+        android:src="@drawable/ic_baseline_link_24"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/facebook"
+        app:layout_constraintBottom_toBottomOf="@id/text_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/email"
+        android:text="Email"
+        android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
+        android:padding="@dimen/_16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_email"
+        tools:text="psmobitech@gmail.com"
+        android:textSize="@dimen/_17sp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingBottom="@dimen/_10dp"
+        android:background="@drawable/background_boundary"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_email"
+        android:src="@drawable/ic_baseline_alternate_email_24"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/email"
+        app:layout_constraintBottom_toBottomOf="@id/text_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

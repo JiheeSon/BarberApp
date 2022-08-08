@@ -9,6 +9,7 @@ import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
+import com.example.barberapp.model.remote.response.contacts.ContactResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
 import retrofit2.Call
@@ -63,4 +64,7 @@ interface ApiService {
     fun bookAppointment(
         @QueryMap params: HashMap<String, String>
     ): Call<AppointmentResponse>
+
+    @GET("shopContacts/getList")
+    suspend fun getContacts(): Response<ContactResponse>
 }

@@ -10,6 +10,7 @@ import com.example.barberapp.model.remote.response.AlertResponse
 import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
+import com.example.barberapp.model.remote.response.contacts.Contact
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +34,7 @@ class DashboardViewModel(private val repository: Repository): ViewModel() {
         preloadData()
     }
 
-    fun preloadData() {
+    private fun preloadData() {
         viewModelScope.launch(Dispatchers.IO)
         {
             try {
@@ -53,10 +54,25 @@ class DashboardViewModel(private val repository: Repository): ViewModel() {
                 processing.postValue(false)
             }
         }
-        //hours
-        //notification
+    }
 
-        //barber
-        //hot deal
+    val contactsLiveData = MutableLiveData<ArrayList<Contact>>()
+    fun getContacts() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repository.getContacts()
+                if (!response.isSuccessful) {
+                    return@launch
+                }
+                response.body()?.let {
+                    val contacts: ArrayList<Contact> = it.contacts as ArrayList<Contact>
+                    contacts.sortBy { it.displayOrder }
+                    contactsLiveData.postValue(contacts)
+                }
+            } catch (e: Exception) {
+                Log.e("Exception", e.toString())
+                e.printStackTrace()
+            }
+        }
     }
 }
