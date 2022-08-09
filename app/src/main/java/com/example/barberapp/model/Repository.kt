@@ -1,5 +1,6 @@
 package com.example.barberapp.model
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.example.barberapp.model.remote.ApiService
@@ -9,9 +10,15 @@ import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
+import com.example.barberapp.model.remote.response.appointment.CurrentAppointmentsResponse
+import com.example.barberapp.model.remote.response.appointment.Slot
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,10 +36,14 @@ class Repository(private val apiService: ApiService) {
     val appointmentError = MutableLiveData<String>()
     val appointmentResponse = MutableLiveData<AppointmentResponse>()
     val appointmentProcessing = MutableLiveData<Boolean>()
-    fun bookAppointment(params: HashMap<String, String>) {
+    fun bookAppointment(ps_auth_token: String, params: HashMap<String, Any>) {
         isProcessing.set(true)
         appointmentProcessing.postValue(true)
-        val call = apiService.bookAppointment(params)
+
+        val reqJson: String = Gson().toJson(params)
+        val body: RequestBody = reqJson.toRequestBody("application/json".toMediaTypeOrNull())
+
+        val call = apiService.bookAppointment(ps_auth_token, body)
         call.enqueue(object : Callback<AppointmentResponse> {
             override fun onResponse(
                 call: Call<AppointmentResponse>,
@@ -62,6 +73,32 @@ class Repository(private val apiService: ApiService) {
                 appointmentError.postValue("Error is : ${t.toString()}.\n\nPlease retry.")
             }
 
+        })
+    }
+
+    val currentAppointmentsLiveData = MutableLiveData<List<Slot>>()
+    fun getCurrentAppointments(barberId: String) {
+        val call = apiService.getCurrentAppointments(barberId)
+        call.enqueue(object : Callback<CurrentAppointmentsResponse> {
+            override fun onResponse(
+                call: Call<CurrentAppointmentsResponse>,
+                response: Response<CurrentAppointmentsResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 0) {
+                        Log.e("loadCurrentAppointments", response.body()!!.slots.toString())
+                        currentAppointmentsLiveData.postValue(response.body()!!.slots)
+
+                    } else {
+                        Log.e("response error", response.body()!!.message)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<CurrentAppointmentsResponse>, t: Throwable) {
+                Log.e("response.body()", t.toString())
+                t.printStackTrace()
+            }
         })
     }
 

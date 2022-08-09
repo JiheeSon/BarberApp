@@ -7,11 +7,13 @@ import com.example.barberapp.model.remote.response.DashboardResponse
 import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.model.remote.response.RegistrationResponse
 import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
+import com.example.barberapp.model.remote.response.appointment.CurrentAppointmentsResponse
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.contacts.ContactResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -60,11 +62,19 @@ interface ApiService {
     @POST("/barber/getBarberServices1")
     suspend fun getBarberServices(): Response<BarberServiceResponse>
 
+    @Headers("Content-type: application/json")
     @POST("/appointment/book")
     fun bookAppointment(
-        @QueryMap params: HashMap<String, String>
+        @Header("ps_auth_token") ps_auth_token: String,
+        //@QueryMap params: HashMap<String, String>
+        @Body bookReq: RequestBody
     ): Call<AppointmentResponse>
 
     @GET("shopContacts/getList")
     suspend fun getContacts(): Response<ContactResponse>
+
+    @GET("appointment/currentAppointments/{barber_id}")
+    fun getCurrentAppointments(
+        @Path("barber_id") barberId: String
+    ): Call<CurrentAppointmentsResponse>
 }

@@ -13,6 +13,7 @@ import com.example.barberapp.model.remote.response.barber.Service
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 
 class AppointmentViewModel(private val repository: Repository): ViewModel() {
     val barbersResponse = repository.barbersResponse
@@ -28,6 +29,7 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
 
     val selectedBarber = MutableLiveData<Barber>()
     val selectedServices = MutableLiveData<ArrayList<Service>>()
+    val selectedServiceId = MutableLiveData<ArrayList<Int>>()
     val totalDuration = MutableLiveData<Double>()
     val totalCost = MutableLiveData<Double>()
     val appointmentDate = MutableLiveData<String>()
@@ -38,8 +40,16 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
     val appointmentResponse = repository.appointmentResponse
     val appointmentError = repository.appointmentError
     val appointmentProcessing = repository.appointmentProcessing
-    fun bookAppointment(params: HashMap<String, String>) {
-        repository.bookAppointment(params)
+    fun bookAppointment(ps_auth_token: String, params: HashMap<String, Any>) {
+        repository.bookAppointment(ps_auth_token, params)
+    }
+
+    val appointmentsStartFromLiveData = MutableLiveData<Int>()
+    val appointmentsDateLiveData = MutableLiveData<String>()
+    val appointmentsSlotLiveData = MutableLiveData<Int>()
+    val currentAppointmentsLiveData = repository.currentAppointmentsLiveData
+    fun getCurrentAppointments() {
+        repository.getCurrentAppointments(selectedBarber.value?.barberId.toString())
     }
 
     fun getBarberList() {
@@ -111,12 +121,15 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
     fun onServiceCheckChange(isChecked: Boolean, selected: Service) {
         if (selectedServices.value == null) {
             selectedServices.value = ArrayList<Service>()
+            selectedServiceId.value = ArrayList()
         }
 
         if (isChecked) {
             selectedServices.value!!.add(selected)
+            selectedServiceId.value!!.add(selected.serviceId)
         } else {
             selectedServices.value!!.remove(selected)
+            selectedServiceId.value!!.remove(selected.serviceId)
         }
     }
 
@@ -132,5 +145,6 @@ class AppointmentViewModel(private val repository: Repository): ViewModel() {
         }
         totalDuration.postValue(duration)
         totalCost.postValue(cost)
+        appointmentsSlotLiveData.postValue((duration / 15 + 0.5).roundToInt())
     }
 }

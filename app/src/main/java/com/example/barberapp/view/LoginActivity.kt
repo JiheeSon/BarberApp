@@ -73,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
         pref.edit().apply{
             putString("mobile_no", user.mobileNo)
             putString("user_Id", user.userId)
+            putString("api_token", user.apiToken)
+            putString("fcm_token", user.fcmToken)
             apply()
         }
     }

@@ -1,7 +1,6 @@
 package com.example.barberapp.view.appointment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,26 +36,43 @@ class SummaryFragment : Fragment() {
 
         val pref = requireActivity().getSharedPreferences("user_info", AppCompatActivity.MODE_PRIVATE)
         val userId = pref.getString("user_Id", "")
+        val token = pref.getString("api_token", "")
         setUpView()
-        setUpEvent(userId)
+        setUpEvent(userId, token!!)
     }
 
-    private fun setUpEvent(userId: String?) {
+    private fun setUpEvent(userId: String?, token: String) {
+        val date = viewModel.appointmentsDateLiveData.value!!
+        val timeFrom = viewModel.appointmentsStartFromLiveData.value!!
+        val slot = viewModel.appointmentsSlotLiveData.value!!
+        val currentAppointments = viewModel.currentAppointmentsLiveData.value!!
+
+        var fromTimeString = ""
+        var toTimeString = ""
+        currentAppointments.forEach() {
+            if (it.date == date) {
+                fromTimeString = it.slots.keys.elementAt(timeFrom).split("-")[0]
+                toTimeString = it.slots.keys.elementAt(timeFrom + slot - 1).split("-")[1]
+            }
+        }
+        val selectedTime = "$fromTimeString-$toTimeString (${viewModel.totalDuration.value.toString()} Minutes)"
+        binding.textTime.text = selectedTime
+
         binding.btnContinue.setOnClickListener {
-            val params = HashMap<String, String>()
+            val params = HashMap<String, Any>()
             params["userId"] = userId.toString()
             params["barberId"] = viewModel.selectedBarber.value?.barberId.toString()
-            params["services"] = viewModel.selectedServices.value.toString()
-            params["aptDate"] = viewModel.appointmentDate.value.toString()
-            params["timeFrom"] = viewModel.startTime.value.toString()
-            params["timeTo"] = viewModel.endTime.value.toString()
+            params["services"] = viewModel.selectedServiceId.value.toString()
+            params["aptDate"] = viewModel.appointmentsDateLiveData.value!!//viewModel.appointmentDate.value.toString()
+            params["timeFrom"] = fromTimeString//viewModel.startTime.value.toString()
+            params["timeTo"] = toTimeString//viewModel.endTime.value.toString()
             params["totalDuration"] = viewModel.totalDuration.value.toString()
             params["totalCost"] = viewModel.totalCost.value.toString()
             params["couponCode"] = ""
-            params["sendSms"] = ""
+            params["sendSms"] = false
 
-            Log.i("jihee4", params.toString())
-            viewModel.bookAppointment(params)
+            viewModel.bookAppointment(token, params)
+
             viewModel.appointmentProcessing.observe(requireActivity()) {
                 if (!it!!) {
                     openDialog()
@@ -78,7 +94,6 @@ class SummaryFragment : Fragment() {
         }
 
         viewModel.appointmentError.observe(requireActivity()) {
-
             val builder = AlertDialog.Builder(requireContext())
                 .setIcon(R.drawable.ic_baseline_error_24)
                 .setTitle("Error")

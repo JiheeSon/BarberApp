@@ -55,7 +55,7 @@ class BarberServiceFragment : Fragment() {
             } else {
                 viewModel.computeTotalDurationAndCost()
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, TimeSelectFragment())
+                    .replace(R.id.fragment, TimeSelectFragment2())
                     //.addToBackStack(null)
                     .commit()
             }

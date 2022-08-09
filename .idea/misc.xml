@@ -12,6 +12,7 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_nav_header.xml" value="0.212" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_no_boundary.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_round.xml" value="0.205" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/background_time_slot.xml" value="0.2125" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_access_alarm_24.xml" value="0.226" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.205" />
@@ -31,6 +32,9 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.137" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/selector_toggle.xml" value="0.1505" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/splash_background.xml" value="0.176" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/time_slot_available.xml" value="0.2125" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/time_slot_booked.xml" value="0.2125" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/drawable/time_slot_selected.xml" value="0.2125" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_appointment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_appointment_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/activity_barber_list.xml" value="0.264" />
@@ -51,6 +55,7 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_service_list.xml" value="0.16" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_summary.xml" value="0.176" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_time_select.xml" value="0.2" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/fragment_time_select2.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/header_nav.xml" value="0.365625" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_appointment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_barber.xml" value="0.264" />
@@ -59,6 +64,8 @@
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_barber_services.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_contact.xml" value="0.1735784523300556" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_notification.xml" value="0.2" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_select_date.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_select_time_slot.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_service_category.xml" value="0.365625" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_service_category2.xml" value="0.365625" />
         <entry key="..\:/Users/jihee/AndroidStudioProjects/BarberApp/app/src/main/res/layout/item_service_list.xml" value="0.4" />
