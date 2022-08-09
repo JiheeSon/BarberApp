@@ -2,13 +2,11 @@ package com.example.barberapp.view.service
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityServiceBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
-import com.example.barberapp.view.appointment.BarberListFragment
 import com.example.barberapp.viewmodel.ServiceVMFactory
 import com.example.barberapp.viewmodel.ServiceViewModel
 

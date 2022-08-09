@@ -28,13 +28,13 @@
             android:name=".view.service.ServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".view.RegistrationActivity"
+            android:name=".view.auth.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".view.dashboard.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".view.SplashScreen"

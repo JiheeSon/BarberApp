@@ -1,4 +1,4 @@
-package com.example.barberapp.view
+package com.example.barberapp.view.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

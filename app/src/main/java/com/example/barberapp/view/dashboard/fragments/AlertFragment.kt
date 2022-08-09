@@ -1,4 +1,4 @@
-package com.example.barberapp.view.dashboard
+package com.example.barberapp.view.dashboard.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentAlertBinding
-import com.example.barberapp.view.appointment.AppointmentActivity
+import com.example.barberapp.view.dashboard.adapter.AlertAdapter
+import com.example.barberapp.view.dashboard.DashboardActivity
 import com.example.barberapp.viewmodel.DashboardViewModel
 
 class AlertFragment : Fragment() {

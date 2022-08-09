@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_30dp"
-    tools:context=".view.LoginActivity">
+    tools:context=".view.auth.LoginActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"

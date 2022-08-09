@@ -1,17 +1,14 @@
-package com.example.barberapp.view.dashboard
+package com.example.barberapp.view.dashboard.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemBarberProfileBinding
 import com.example.barberapp.model.Constants
 import com.example.barberapp.model.remote.response.barber.Barber
-import com.example.barberapp.view.appointment.AppointmentActivity
 
 class BarberProfileAdapter (private val barberList: List<Barber>): RecyclerView.Adapter<BarberProfileAdapter.BarberProfileViewHolder>() {
     private lateinit var binding: ItemBarberProfileBinding

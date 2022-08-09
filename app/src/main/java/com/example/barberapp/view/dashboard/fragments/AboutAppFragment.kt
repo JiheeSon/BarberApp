@@ -1,4 +1,4 @@
-package com.example.barberapp.view.dashboard
+package com.example.barberapp.view.dashboard.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

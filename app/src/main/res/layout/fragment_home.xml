@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_green"
-    tools:context=".view.dashboard.HomeFragment">
+    tools:context=".view.dashboard.fragments.HomeFragment">
 
     <FrameLayout
         app:layout_constraintTop_toTopOf="parent"

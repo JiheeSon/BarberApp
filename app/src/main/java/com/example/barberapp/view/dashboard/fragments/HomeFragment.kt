@@ -1,4 +1,4 @@
-package com.example.barberapp.view.dashboard
+package com.example.barberapp.view.dashboard.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentHomeBinding
 import com.example.barberapp.view.appointment.AppointmentActivity
+import com.example.barberapp.view.dashboard.adapter.BarberProfileAdapter
+import com.example.barberapp.view.dashboard.adapter.CategoryAdapter
+import com.example.barberapp.view.dashboard.DashboardActivity
 import com.example.barberapp.view.service.ServiceActivity
 import com.example.barberapp.viewmodel.DashboardViewModel
 

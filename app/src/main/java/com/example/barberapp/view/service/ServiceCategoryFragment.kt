@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentServiceCategoryBinding
-import com.example.barberapp.view.appointment.AppointmentActivity
-import com.example.barberapp.view.dashboard.CategoryAdapter
 import com.example.barberapp.viewmodel.ServiceViewModel
 
 class ServiceCategoryFragment : Fragment() {

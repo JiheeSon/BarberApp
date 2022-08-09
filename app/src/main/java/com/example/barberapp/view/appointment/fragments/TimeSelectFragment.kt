@@ -1,4 +1,4 @@
-package com.example.barberapp.view.appointment
+package com.example.barberapp.view.appointment.fragments
 
 import android.os.Build
 import android.os.Bundle

@@ -7,6 +7,7 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityAppointmentBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.view.appointment.fragments.BarberListFragment
 import com.example.barberapp.viewmodel.AppointmentVMFactory
 import com.example.barberapp.viewmodel.AppointmentViewModel
 

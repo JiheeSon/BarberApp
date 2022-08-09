@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.appointment.TimeSelectFragment2">
+    tools:context=".view.appointment.fragments.TimeSelectFragment2">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_selected_date"

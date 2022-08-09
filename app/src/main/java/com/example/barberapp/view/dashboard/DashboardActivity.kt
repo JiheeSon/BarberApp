@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.barberapp.BuildConfig
@@ -14,8 +13,12 @@ import com.example.barberapp.databinding.ActivityDashboardBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.view.AppointmentListActivity
-import com.example.barberapp.view.LoginActivity
+import com.example.barberapp.view.auth.LoginActivity
 import com.example.barberapp.view.appointment.AppointmentActivity
+import com.example.barberapp.view.dashboard.fragments.AboutAppFragment
+import com.example.barberapp.view.dashboard.fragments.AlertFragment
+import com.example.barberapp.view.dashboard.fragments.HomeFragment
+import com.example.barberapp.view.dashboard.fragments.ReachFragment
 import com.example.barberapp.view.service.ServiceActivity
 import com.example.barberapp.viewmodel.DashboardVMFactory
 import com.example.barberapp.viewmodel.DashboardViewModel

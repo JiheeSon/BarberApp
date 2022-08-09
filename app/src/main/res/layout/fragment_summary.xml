@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/_10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.appointment.SummaryFragment">
+    tools:context=".view.appointment.fragments.SummaryFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_date"

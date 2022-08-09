@@ -1,4 +1,4 @@
-package com.example.barberapp.view.dashboard
+package com.example.barberapp.view.dashboard.adapter
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package com.example.barberapp.view.appointment
+package com.example.barberapp.view.appointment.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentBarberServiceBinding
+import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.appointment.adapter.ServiceSectionAdapter
 import com.example.barberapp.viewmodel.AppointmentViewModel
 import com.google.android.material.snackbar.Snackbar
