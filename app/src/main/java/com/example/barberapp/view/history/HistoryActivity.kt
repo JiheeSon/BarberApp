@@ -24,11 +24,17 @@ class HistoryActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        setUpViewModel()
+
+        val pref = getSharedPreferences("user_info", AppCompatActivity.MODE_PRIVATE)
+        val userId = pref.getString("user_Id", "")
+        val token = pref.getString("api_token", "")
+        viewModel.apiToken.postValue(token!!)
+        viewModel.userId.postValue(userId!!)
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment, AppointmentListFragment())
             .commit()
-
-        setUpViewModel()
     }
 
     private fun setUpViewModel() {

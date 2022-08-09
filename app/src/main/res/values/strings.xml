@@ -40,4 +40,6 @@
     <string name="barber">Barber</string>
     <string name="cancel">Cancel</string>
     <string name="my_appointments">My Appointments</string>
+    <string name="reschedule">Reschedule</string>
+    <string name="date_amp_time"><![CDATA[Date & Time]]></string>
 </resources>

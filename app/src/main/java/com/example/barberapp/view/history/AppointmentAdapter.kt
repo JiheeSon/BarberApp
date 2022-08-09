@@ -21,6 +21,9 @@ class AppointmentAdapter (private val context: Context, private val viewModel: H
         holder.apply {
             val info = infoArrayList.get(position)
             holder.bind(info)
+            holder.itemView.setOnClickListener {
+                viewModel.selectedAppointmentNum.postValue(info.aptNo.toString())
+            }
         }
     }
 

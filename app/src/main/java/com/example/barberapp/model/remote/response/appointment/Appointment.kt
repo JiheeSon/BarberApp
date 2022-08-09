@@ -1,5 +1,7 @@
 package com.example.barberapp.model.remote.response.appointment
 
+import com.example.barberapp.model.remote.response.barber.Service
+
 data class Appointment(
     val aptDate: String,
     val aptNo: Int,

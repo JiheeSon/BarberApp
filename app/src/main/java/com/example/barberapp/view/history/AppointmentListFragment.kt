@@ -35,11 +35,25 @@ class AppointmentListFragment : Fragment() {
 
         viewModel.getAppointments(token!!, userId!!)
 
+        setUpView()
+        setUpEvents()
+    }
+
+    private fun setUpEvents() {
+        viewModel.selectedAppointmentNum.observe(requireActivity()) {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, AppointmentDetailFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+    }
+
+    private fun setUpView() {
         viewModel.appointmentsLiveData.observe(requireActivity()) {
             it?.let {
                 val adapter = AppointmentAdapter(requireContext(), viewModel, it)
                 binding.recyclerviewAppointments.adapter = adapter
-                binding.recyclerviewAppointments.layoutManager = LinearLayoutManager(view.context)
+                binding.recyclerviewAppointments.layoutManager = LinearLayoutManager(requireContext())
             }
         }
     }

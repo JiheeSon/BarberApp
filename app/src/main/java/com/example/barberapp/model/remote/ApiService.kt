@@ -85,4 +85,11 @@ interface ApiService {
         @Header("ps_auth_token") ps_auth_token: String,
         @Path("user_id") userId: String
     ): Call<GetAppointmentsResponse>
+
+    @Headers("Content-type: application/json")
+    @GET("appointment/getAppointmentDetail/{appointment_id}")
+    fun getAppointmentDetail(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Path("appointment_id") appointmentId: String
+    ): Call<AppointmentResponse>
 }
