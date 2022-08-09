@@ -1,0 +1,38 @@
+package com.example.barberapp.view.history
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import com.example.barberapp.R
+import com.example.barberapp.databinding.ActivityHistoryBinding
+import com.example.barberapp.model.Repository
+import com.example.barberapp.model.remote.ApiService
+import com.example.barberapp.view.appointment.fragments.BarberListFragment
+import com.example.barberapp.viewmodel.AppointmentVMFactory
+import com.example.barberapp.viewmodel.AppointmentViewModel
+import com.example.barberapp.viewmodel.HistoryVMFactory
+import com.example.barberapp.viewmodel.HistoryViewModel
+
+class HistoryActivity : AppCompatActivity() {
+    private lateinit var viewModel: HistoryViewModel
+    private lateinit var binding: ActivityHistoryBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment, AppointmentListFragment())
+            .commit()
+
+        setUpViewModel()
+    }
+
+    private fun setUpViewModel() {
+        val vmFactory = HistoryVMFactory(Repository(ApiService.getInstance()))
+        viewModel = ViewModelProvider(this@HistoryActivity, vmFactory)[HistoryViewModel::class.java]
+    }
+}

@@ -11,6 +11,7 @@ import com.example.barberapp.model.remote.response.appointment.CurrentAppointmen
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
 import com.example.barberapp.model.remote.response.barber.BarbersResponse
 import com.example.barberapp.model.remote.response.contacts.ContactResponse
+import com.example.barberapp.model.remote.response.history.GetAppointmentsResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
 import okhttp3.RequestBody
@@ -77,4 +78,11 @@ interface ApiService {
     fun getCurrentAppointments(
         @Path("barber_id") barberId: String
     ): Call<CurrentAppointmentsResponse>
+
+    @Headers("Content-type: application/json")
+    @GET("appointment/myAppointments/{user_id}")
+    fun getAppointments(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Path("user_id") userId: String
+    ): Call<GetAppointmentsResponse>
 }

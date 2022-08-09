@@ -33,6 +33,8 @@ class Repository(private val apiService: ApiService) {
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
 
+    fun getAppointments(token: String, userId: String) = apiService.getAppointments(token, userId)
+
     val appointmentError = MutableLiveData<String>()
     val appointmentResponse = MutableLiveData<AppointmentResponse>()
     val appointmentProcessing = MutableLiveData<Boolean>()

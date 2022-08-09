@@ -12,13 +12,13 @@ import com.example.barberapp.R
 import com.example.barberapp.databinding.ActivityDashboardBinding
 import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
-import com.example.barberapp.view.AppointmentListActivity
 import com.example.barberapp.view.auth.LoginActivity
 import com.example.barberapp.view.appointment.AppointmentActivity
 import com.example.barberapp.view.dashboard.fragments.AboutAppFragment
 import com.example.barberapp.view.dashboard.fragments.AlertFragment
 import com.example.barberapp.view.dashboard.fragments.HomeFragment
 import com.example.barberapp.view.dashboard.fragments.ReachFragment
+import com.example.barberapp.view.history.HistoryActivity
 import com.example.barberapp.view.service.ServiceActivity
 import com.example.barberapp.viewmodel.DashboardVMFactory
 import com.example.barberapp.viewmodel.DashboardViewModel
@@ -69,7 +69,7 @@ class DashboardActivity : AppCompatActivity() {
             binding.layoutDashboard.closeDrawer(GravityCompat.START)
             when (menuItems.itemId) {
                 R.id.nav_book -> { startActivity(Intent(this@DashboardActivity, AppointmentActivity::class.java)) }
-                R.id.nav_appointments -> { startActivity(Intent(this@DashboardActivity, AppointmentListActivity::class.java)) }
+                R.id.nav_appointments -> { startActivity(Intent(this@DashboardActivity, HistoryActivity::class.java)) }
                 R.id.nav_service -> { startActivity(Intent(this@DashboardActivity, ServiceActivity::class.java)) }
                 R.id.nav_reach -> {
                     supportFragmentManager.beginTransaction()
