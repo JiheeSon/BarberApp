@@ -43,7 +43,7 @@ class AppointmentListFragment : Fragment() {
         viewModel.selectedAppointmentNum.observe(requireActivity()) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment, AppointmentDetailFragment())
-                .addToBackStack(null)
+                //.addToBackStack(null)
                 .commit()
         }
     }
@@ -51,6 +51,10 @@ class AppointmentListFragment : Fragment() {
     private fun setUpView() {
         viewModel.appointmentsLiveData.observe(requireActivity()) {
             it?.let {
+                binding.circularProgressBar.visibility = View.GONE
+                if (it.isEmpty()) {
+                    binding.noAppointments.visibility = View.VISIBLE
+                }
                 val adapter = AppointmentAdapter(requireContext(), viewModel, it)
                 binding.recyclerviewAppointments.adapter = adapter
                 binding.recyclerviewAppointments.layoutManager = LinearLayoutManager(requireContext())

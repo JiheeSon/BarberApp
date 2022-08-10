@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemAppointmentBinding
@@ -40,12 +41,7 @@ class AppointmentAdapter (private val context: Context, private val viewModel: H
                 textTime.text = "${appointmentInfo.timeFrom} to ${appointmentInfo.timeTo} (${appointmentInfo.totalDuration} Minutes)"
                 textStatus.text = appointmentInfo.aptStatus
                 if (appointmentInfo.aptStatus == "Canceled") {
-                    textStatus.setCompoundDrawables(
-                        ContextCompat.getDrawable(
-                            context,
-                            R.drawable.ic_baseline_cancel_24
-                        ), null, null, null
-                    )
+                    textStatus.setCompoundDrawables(ResourcesCompat.getDrawable(context.resources, R.drawable.ic_baseline_cancel_24, null), null, null, null)
                 }
             }
         }

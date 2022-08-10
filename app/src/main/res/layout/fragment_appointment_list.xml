@@ -3,13 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.history.AppointmentListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_appointments"
         tools:listitem="@layout/item_appointment"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_appointments"
+        android:text="@string/no_appointments_yet"
+        android:textSize="@dimen/_30sp"
+        android:fontFamily="sans-serif-condensed"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circularProgressBar"
+        android:layout_width="@dimen/_120dp"
+        android:layout_height="@dimen/_120dp"
+        android:indeterminate="true"
+        app:indicatorColor="@color/white"
+        app:indicatorDirectionCircular="clockwise"
+        app:indicatorSize="@dimen/_120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/black"
+        app:trackThickness="@dimen/_20dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

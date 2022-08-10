@@ -92,4 +92,11 @@ interface ApiService {
         @Header("ps_auth_token") ps_auth_token: String,
         @Path("appointment_id") appointmentId: String
     ): Call<AppointmentResponse>
+
+    @GET("appointment/cancelAppointment/{appointment_id}")
+    fun cancelAppointment(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Path("appointment_id") appointmentId: String
+    ): Call<AppointmentResponse>
+
 }

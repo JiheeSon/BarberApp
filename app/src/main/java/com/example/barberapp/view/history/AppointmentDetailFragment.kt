@@ -1,22 +1,28 @@
 package com.example.barberapp.view.history
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentAppointmentDetailBinding
 import com.example.barberapp.model.Constants
+import com.example.barberapp.model.remote.response.appointment.Appointment
 import com.example.barberapp.view.appointment.adapter.SelectedServiceAdapter
 import com.example.barberapp.viewmodel.HistoryViewModel
 
 class AppointmentDetailFragment : Fragment() {
     private lateinit var binding: FragmentAppointmentDetailBinding
     private lateinit var viewModel: HistoryViewModel
+    private lateinit var appointment: Appointment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +39,28 @@ class AppointmentDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpView()
+        setUpEvents()
+    }
+
+    private fun setUpEvents() {
+        binding.btnCancel.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+                .setIcon(R.drawable.ic_baseline_check_24)
+                .setTitle("Confirm Cancel")
+                .setMessage("Are your sure you want to cancel this appointment? Once cancelled, you will be no more able to claim for this appointment.")
+                .setPositiveButton("YES") { _, _ ->
+                    viewModel.cancelAppointment(appointment.aptNo)
+                }
+                .setNegativeButton("No") { _, _ -> }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(true)
+            alertDialog.show()
+        }
     }
 
     private fun setUpView() {
         viewModel.appointmentLiveData.observe(requireActivity()) {
+            appointment = viewModel.appointmentLiveData.value!!
             binding.apply {
                 textDate.text = it.aptDate
                 textTime.text = "${it.timeFrom} to ${it.timeTo} (${it.totalDuration} Minutes)"
@@ -45,7 +69,7 @@ class AppointmentDetailFragment : Fragment() {
                 textStatus.text = it.aptStatus
 
                 if (it.aptStatus == "Canceled") {
-                    textStatus.setCompoundDrawables(requireContext().getDrawable(R.drawable.ic_baseline_cancel_24), null, null, null)
+                    //textStatus.setCompoundDrawables(ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.ic_baseline_cancel_24, null), null, null, null)
                     btnCancel.visibility = View.GONE
                     btnReschedule.visibility = View.GONE
                 }

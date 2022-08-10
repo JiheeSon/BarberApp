@@ -35,6 +35,7 @@ class Repository(private val apiService: ApiService) {
 
     fun getAppointmentDetail(token: String, appointmentId: String) = apiService.getAppointmentDetail(token, appointmentId)
     fun getAppointments(token: String, userId: String) = apiService.getAppointments(token, userId)
+    fun cancelAppointment(token: String, appointmentId: String) = apiService.cancelAppointment(token, appointmentId)
 
     val appointmentError = MutableLiveData<String>()
     val appointmentResponse = MutableLiveData<AppointmentResponse>()

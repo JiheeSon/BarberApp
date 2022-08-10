@@ -23,6 +23,10 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
+
+        binding.toolbar.title = "Appointments"
 
         setUpViewModel()
 

@@ -74,4 +74,33 @@ class HistoryViewModel(private val repository: Repository): ViewModel() {
             }
         })
     }
+
+    fun cancelAppointment(appointmentId: Int) {
+        val call: Call<AppointmentResponse> =
+            repository.cancelAppointment(apiToken.value!!, appointmentId.toString())
+        call.enqueue(object : Callback<AppointmentResponse> {
+            override fun onResponse(
+                call: Call<AppointmentResponse>,
+                response: Response<AppointmentResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 0) {
+                        Log.e(
+                            "cancelAppointment",
+                            response.body()!!.appointment.toString()
+                        )
+                        appointmentLiveData.postValue(response.body()!!.appointment)
+
+                    } else {
+                        Log.e("response error", response.body()!!.message)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<AppointmentResponse>, t: Throwable) {
+                Log.e("response.body()", t.toString())
+                t.printStackTrace()
+            }
+        })
+    }
 }
