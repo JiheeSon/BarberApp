@@ -14,10 +14,7 @@ import com.example.barberapp.model.Repository
 import com.example.barberapp.model.remote.ApiService
 import com.example.barberapp.view.auth.LoginActivity
 import com.example.barberapp.view.appointment.AppointmentActivity
-import com.example.barberapp.view.dashboard.fragments.AboutAppFragment
-import com.example.barberapp.view.dashboard.fragments.AlertFragment
-import com.example.barberapp.view.dashboard.fragments.HomeFragment
-import com.example.barberapp.view.dashboard.fragments.ReachFragment
+import com.example.barberapp.view.dashboard.fragments.*
 import com.example.barberapp.view.history.HistoryActivity
 import com.example.barberapp.view.service.ServiceActivity
 import com.example.barberapp.viewmodel.DashboardVMFactory
@@ -74,6 +71,12 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.nav_reach -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment, ReachFragment())
+                        .addToBackStack(null)
+                        .commit()
+                }
+                R.id.nav_hours -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, WorkingHoursFragment())
                         .addToBackStack(null)
                         .commit()
                 }

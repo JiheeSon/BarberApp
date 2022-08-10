@@ -14,6 +14,8 @@ import com.example.barberapp.model.remote.response.contacts.ContactResponse
 import com.example.barberapp.model.remote.response.history.GetAppointmentsResponse
 import com.example.barberapp.model.remote.response.service.ServiceCategoryResponse
 import com.example.barberapp.model.remote.response.service.ServiceResponse
+import com.example.barberapp.model.remote.response.workinghours.WorkingHourResponse
+import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
@@ -98,5 +100,9 @@ interface ApiService {
         @Header("ps_auth_token") ps_auth_token: String,
         @Path("appointment_id") appointmentId: String
     ): Call<AppointmentResponse>
+
+    @Headers("Content-type: application/json")
+    @GET("workingHours/getList")
+    fun getWorkingHours(): Single<WorkingHourResponse>
 
 }

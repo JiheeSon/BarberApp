@@ -63,7 +63,12 @@ class HomeFragment : Fragment() {
         binding.apply {
             btnReserve.setOnClickListener { startActivity(Intent(context, AppointmentActivity::class.java)) }
             btnService.setOnClickListener { startActivity(Intent(context, ServiceActivity::class.java)) }
-            btnHours.setOnClickListener {  }
+            btnHours.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, WorkingHoursFragment())
+                    .addToBackStack(null)
+                    .commit()
+            }
             btnMore.setOnClickListener { (activity as DashboardActivity).openDrawer() }
         }
     }
