@@ -21,10 +21,10 @@
             android:id="@+id/nav_hours"
             android:icon="@drawable/ic_baseline_access_time_24"
             android:title="@string/working_hours"/>
-        <item
-            android:id="@+id/nav_rating"
-            android:icon="@drawable/ic_baseline_rate_review_24"
-            android:title="@string/user_ratings"/>
+<!--        <item-->
+<!--            android:id="@+id/nav_rating"-->
+<!--            android:icon="@drawable/ic_baseline_rate_review_24"-->
+<!--            android:title="@string/user_ratings"/>-->
     </group>
 
     <group

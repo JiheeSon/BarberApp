@@ -54,7 +54,6 @@
         app:layout_constraintTop_toBottomOf="@id/mobile_number"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:errorEnabled="true"
-        app:boxStrokeColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -80,7 +79,6 @@
         app:layout_constraintTop_toBottomOf="@id/password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:errorEnabled="true"
-        app:boxStrokeColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

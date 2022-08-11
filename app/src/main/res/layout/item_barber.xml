@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="@dimen/_10dp"
-        android:background="@color/gray_white"
+        android:background="@color/background_round"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
             android:id="@+id/text_name"
             tools:text="Any Barber"
             android:textSize="@dimen/_17sp"
-            android:textColor="@color/black"
+            android:textColor="@color/basic"
             app:layout_constraintTop_toBottomOf="@id/img_barber"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

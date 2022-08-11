@@ -8,4 +8,9 @@
     <color name="main_green">#6EA46E</color>
     <color name="main_gray">#7F7369</color>
     <color name="gray_white">#F4F4F4</color>
+    <color name="background_dash">@color/black</color>
+    <color name="basic">@color/white</color>
+    <color name="background_round">@color/main_gray</color>
+    <color name="dark_green">#4C714C</color>
+    <color name="dash_green">@color/dark_green</color>
 </resources>

@@ -15,4 +15,9 @@
     <color name="main_green">#6EA46E</color>
     <color name="main_gray">#7F7369</color>
     <color name="gray_white">#F4F4F4</color>
+    <color name="background_dash">@color/gray_white</color>
+    <color name="basic">@color/black</color>
+    <color name="background_round">@color/gray_white</color>
+    <color name="dark_green">#4C714C</color>
+    <color name="dash_green">@color/main_green</color>
 </resources>

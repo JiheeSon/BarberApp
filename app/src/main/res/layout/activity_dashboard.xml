@@ -13,7 +13,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/main_green"
+            android:background="@color/dash_green"
             app:menu="@menu/menu_notification"
             app:title="My Salon"
             app:titleTextColor="@color/white"
