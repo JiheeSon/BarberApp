@@ -2,10 +2,7 @@ package com.example.barberapp.model.remote
 
 import com.example.barberapp.model.remote.request.LoginRequest
 import com.example.barberapp.model.remote.request.RegistrationRequest
-import com.example.barberapp.model.remote.response.AlertResponse
-import com.example.barberapp.model.remote.response.DashboardResponse
-import com.example.barberapp.model.remote.response.LoginResponse
-import com.example.barberapp.model.remote.response.RegistrationResponse
+import com.example.barberapp.model.remote.response.*
 import com.example.barberapp.model.remote.response.appointment.AppointmentResponse
 import com.example.barberapp.model.remote.response.appointment.CurrentAppointmentsResponse
 import com.example.barberapp.model.remote.response.barber.BarberServiceResponse
@@ -65,6 +62,7 @@ interface ApiService {
     @POST("/barber/getBarberServices1")
     suspend fun getBarberServices(): Response<BarberServiceResponse>
 
+
     @Headers("Content-type: application/json")
     @POST("/appointment/book")
     fun bookAppointment(
@@ -73,13 +71,16 @@ interface ApiService {
         @Body bookReq: RequestBody
     ): Call<AppointmentResponse>
 
+
     @GET("shopContacts/getList")
     suspend fun getContacts(): Response<ContactResponse>
+
 
     @GET("appointment/currentAppointments/{barber_id}")
     fun getCurrentAppointments(
         @Path("barber_id") barberId: String
     ): Call<CurrentAppointmentsResponse>
+
 
     @Headers("Content-type: application/json")
     @GET("appointment/myAppointments/{user_id}")
@@ -88,6 +89,7 @@ interface ApiService {
         @Path("user_id") userId: String
     ): Call<GetAppointmentsResponse>
 
+
     @Headers("Content-type: application/json")
     @GET("appointment/getAppointmentDetail/{appointment_id}")
     fun getAppointmentDetail(
@@ -95,14 +97,24 @@ interface ApiService {
         @Path("appointment_id") appointmentId: String
     ): Call<AppointmentResponse>
 
+
     @GET("appointment/cancelAppointment/{appointment_id}")
     fun cancelAppointment(
         @Header("ps_auth_token") ps_auth_token: String,
         @Path("appointment_id") appointmentId: String
     ): Call<AppointmentResponse>
 
+
     @Headers("Content-type: application/json")
     @GET("workingHours/getList")
     fun getWorkingHours(): Single<WorkingHourResponse>
+
+
+    @Headers("Content-type: application/json")
+    @POST("appUser/updateFcmToken")
+    fun updateFcmToken(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Body updateReq: RequestBody
+    ): Single<BaseResponse>
 
 }

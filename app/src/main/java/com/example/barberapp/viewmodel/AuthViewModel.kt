@@ -13,8 +13,17 @@ import com.example.barberapp.model.util.confirmPassword
 import com.example.barberapp.model.util.isMobileValid
 import com.example.barberapp.model.util.isNotEmpty
 import com.example.barberapp.model.util.isPasswordValid
+import com.google.gson.Gson
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class AuthViewModel(private val repository: Repository): ViewModel() {
+    var compositeDisposable: CompositeDisposable = CompositeDisposable()
+
     val mobileNo = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val passwordConfirm = MutableLiveData<String>()
@@ -78,5 +87,27 @@ class AuthViewModel(private val repository: Repository): ViewModel() {
                 isNotEmpty(password.value) &&
                 isMobileValid(mobileNo.value.toString()) &&
                 isPasswordValid(password.value.toString())
+    }
+
+    fun updateFcmToken (fcmToken: String) {
+        val ps_auth_token = loginResponse.value!!.apiToken
+        val map = HashMap<String, Any>()
+        map["userId"] = loginResponse.value!!.userId
+        map["fcmToken"] = fcmToken
+        map["application"] = "BarberApp"
+        val reqJson: String = Gson().toJson(map)
+        val body: RequestBody =
+            reqJson.toRequestBody("application/json".toMediaTypeOrNull())
+        compositeDisposable.add(repository.updateFcmToken(ps_auth_token, body)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+
+                },
+                { t: Throwable? -> Log.i("Throwable", t?.message ?: "error") }
+            )
+
+        )
     }
 }

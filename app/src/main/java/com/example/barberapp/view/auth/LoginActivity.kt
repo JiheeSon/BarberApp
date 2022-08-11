@@ -14,6 +14,7 @@ import com.example.barberapp.model.remote.response.LoginResponse
 import com.example.barberapp.view.dashboard.DashboardActivity
 import com.example.barberapp.viewmodel.*
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -46,6 +47,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.loginResponse.observe(this) {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    viewModel.updateFcmToken(it.result)
+                }
+            }
             saveUser(it)
             startActivity(Intent(baseContext, DashboardActivity::class.java))
             finish()

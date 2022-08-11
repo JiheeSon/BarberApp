@@ -22,6 +22,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Body
 
 class Repository(private val apiService: ApiService) {
     val isProcessing = ObservableField<Boolean>()
@@ -33,6 +34,7 @@ class Repository(private val apiService: ApiService) {
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
 
+    fun updateFcmToken(ps_auth_token: String, updateReq: RequestBody) = apiService.updateFcmToken(ps_auth_token, updateReq)
     fun getAppointmentDetail(token: String, appointmentId: String) = apiService.getAppointmentDetail(token, appointmentId)
     fun getAppointments(token: String, userId: String) = apiService.getAppointments(token, userId)
     fun cancelAppointment(token: String, appointmentId: String) = apiService.cancelAppointment(token, appointmentId)
