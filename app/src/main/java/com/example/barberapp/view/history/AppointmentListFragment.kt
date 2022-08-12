@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.barberapp.R
 import com.example.barberapp.databinding.FragmentAppointmentListBinding
@@ -41,10 +42,11 @@ class AppointmentListFragment : Fragment() {
 
     private fun setUpEvents() {
         viewModel.selectedAppointmentNum.observe(requireActivity()) {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, AppointmentDetailFragment())
-                //.addToBackStack(null)
-                .commit()
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment, AppointmentDetailFragment())
+//                //.addToBackStack(null)
+//                .commit()
+            //binding.root.findNavController().navigate(R.id.action_appointmentListFragment_to_appointmentDetailFragment)
         }
     }
 

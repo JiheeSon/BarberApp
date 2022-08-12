@@ -62,15 +62,15 @@
         android:text="@string/cancel"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_continue"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="@color/main_red"
         android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_continue"
-        android:text="@string/next"
+        android:id="@+id/btn_confirm"
+        android:text="@string/confirm"
         android:textColor="@color/white"
         android:backgroundTint="@color/main_sky_blue"
         app:layout_constraintStart_toEndOf="@id/btn_cancel"

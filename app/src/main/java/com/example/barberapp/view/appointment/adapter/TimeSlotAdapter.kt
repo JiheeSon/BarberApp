@@ -4,19 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemSelectTimeSlotBinding
 import com.example.barberapp.viewmodel.AppointmentViewModel
 
-class TimeSlotAdapter (private val fragment: Fragment, val infoMap: Map<String, Boolean>) : RecyclerView.Adapter<TimeSlotAdapter.TimeSlotViewHolder>() {
-    private lateinit var mainViewModel: AppointmentViewModel
+class TimeSlotAdapter (private val fragment: Fragment, val infoMap: Map<String, Boolean>, private val appointmentsStartFromLiveData: MutableLiveData<Int>, private val appointmentsSlotLiveData: MutableLiveData<Int>) : RecyclerView.Adapter<TimeSlotAdapter.TimeSlotViewHolder>() {
     private lateinit var binding: ItemSelectTimeSlotBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeSlotViewHolder {
         binding = ItemSelectTimeSlotBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        mainViewModel = ViewModelProvider(fragment.requireActivity())[AppointmentViewModel::class.java]
         return TimeSlotViewHolder(binding)
     }
 
@@ -52,10 +51,10 @@ class TimeSlotAdapter (private val fragment: Fragment, val infoMap: Map<String, 
                 binding.tvTimeSlot.setBackgroundResource(R.drawable.time_slot_available)
             }
             binding.tvTimeSlot.setOnClickListener {
-                val slots = mainViewModel.appointmentsSlotLiveData.value!!
+                val slots = appointmentsSlotLiveData.value!!
                 val freeSlots = freeSlots(slots, position)
                 if (freeSlots == -1) {
-                    mainViewModel.appointmentsStartFromLiveData.postValue(position)
+                    appointmentsStartFromLiveData.postValue(position)
                 } else {
                     val builder = AlertDialog.Builder(fragment.requireContext())
                         .setTitle("Sorry")
@@ -69,8 +68,8 @@ class TimeSlotAdapter (private val fragment: Fragment, val infoMap: Map<String, 
                 }
             }
 
-            mainViewModel.appointmentsStartFromLiveData.observe(fragment.requireActivity()) {
-                val slots = mainViewModel.appointmentsSlotLiveData.value!!
+            appointmentsStartFromLiveData.observe(fragment.requireActivity()) {
+                val slots = appointmentsSlotLiveData.value!!
                 if (it != -1 && position in it until (it + slots)) {
                     binding.tvTimeSlot.setBackgroundResource(R.drawable.time_slot_selected)
                 } else {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barberapp.R
 import com.example.barberapp.databinding.ItemAppointmentBinding
@@ -24,6 +25,8 @@ class AppointmentAdapter (private val context: Context, private val viewModel: H
             holder.bind(info)
             holder.itemView.setOnClickListener {
                 viewModel.selectedAppointmentNum.postValue(info.aptNo.toString())
+
+                binding.root.findNavController().navigate(R.id.action_appointmentListFragment_to_appointmentDetailFragment)
             }
         }
     }

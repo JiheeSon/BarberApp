@@ -34,6 +34,7 @@ class Repository(private val apiService: ApiService) {
     val serviceCategoryResponse = MutableLiveData<ServiceCategoryResponse>()
     val dashboardResponse = MutableLiveData<DashboardResponse>()
 
+    fun rescheduleAppointment(ps_auth_token: String, reqest: RequestBody) = apiService.rescheduleAppointment(ps_auth_token, reqest)
     fun updateFcmToken(ps_auth_token: String, updateReq: RequestBody) = apiService.updateFcmToken(ps_auth_token, updateReq)
     fun getAppointmentDetail(token: String, appointmentId: String) = apiService.getAppointmentDetail(token, appointmentId)
     fun getAppointments(token: String, userId: String) = apiService.getAppointments(token, userId)

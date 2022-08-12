@@ -42,4 +42,5 @@
     <string name="date_amp_time"><![CDATA[Date & Time]]></string>
     <string name="no_appointments_yet">No Appointments Yet</string>
     <string name="register_now">Register Now!</string>
+    <string name="confirm">Confirm</string>
 </resources>

@@ -117,4 +117,10 @@ interface ApiService {
         @Body updateReq: RequestBody
     ): Single<BaseResponse>
 
+    @Headers("Content-type: application/json")
+    @POST("/appointment/reschedule")
+    fun rescheduleAppointment(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Body request: RequestBody
+    ): Call<AppointmentResponse>
 }

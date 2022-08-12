@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/appointmentListFragment">
+
+    <fragment
+        android:id="@+id/appointmentListFragment"
+        android:name="com.example.barberapp.view.history.AppointmentListFragment"
+        android:label="fragment_appointment_list"
+        tools:layout="@layout/fragment_appointment_list" >
+        <action
+            android:id="@+id/action_appointmentListFragment_to_appointmentDetailFragment"
+            app:destination="@id/appointmentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailFragment"
+        android:name="com.example.barberapp.view.history.AppointmentDetailFragment"
+        android:label="fragment_appointment_detail"
+        tools:layout="@layout/fragment_appointment_detail" >
+        <action
+            android:id="@+id/action_appointmentDetailFragment_to_rescheduleFragment"
+            app:destination="@id/rescheduleFragment" />
+        <action
+            android:id="@+id/action_appointmentDetailFragment_to_appointmentListFragment"
+            app:destination="@id/appointmentListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rescheduleFragment"
+        android:name="com.example.barberapp.view.history.RescheduleFragment"
+        android:label="fragment_reschedule"
+        tools:layout="@layout/fragment_reschedule" >
+        <action
+            android:id="@+id/action_rescheduleFragment_to_appointmentDetailFragment"
+            app:destination="@id/appointmentDetailFragment" />
+    </fragment>
+</navigation>

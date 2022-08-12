@@ -1,5 +1,6 @@
 package com.example.barberapp.view.history
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.barberapp.R
@@ -56,6 +60,13 @@ class AppointmentDetailFragment : Fragment() {
             alertDialog.setCancelable(true)
             alertDialog.show()
         }
+
+        binding.btnReschedule.setOnClickListener {
+            val options = NavOptions.Builder().apply {
+                setPopUpTo(R.id.rescheduleFragment, true, false)
+            }.build()
+            binding.root.findNavController().navigate(R.id.action_appointmentDetailFragment_to_rescheduleFragment, null, options)
+        }
     }
 
     private fun setUpView() {
@@ -74,9 +85,11 @@ class AppointmentDetailFragment : Fragment() {
                     btnReschedule.visibility = View.GONE
                 }
 
-                Glide.with(requireContext())
-                    .load(Constants.BASE_IMAGE_URL + it.profilePic)
-                    .into(imgBarber)
+                if (isAdded) {
+                    Glide.with(requireContext())
+                        .load(Constants.BASE_IMAGE_URL + it.profilePic)
+                        .into(imgBarber)
+                }
             }
 
             val adapter = SelectedServiceAdapter(it.services)

@@ -84,7 +84,7 @@ class TimeSelectFragment2 : Fragment() {
     private fun setUpView() {
         viewModel.currentAppointmentsLiveData.observe(requireActivity()) {
             val availableSlots = it.filter { it.slots.size > 0 }
-            val dateAdapter = DateSlotAdapter(this, viewModel, availableSlots)
+            val dateAdapter = DateSlotAdapter(this, viewModel.appointmentsDateLiveData, availableSlots)
             binding.recyclerviewDates.adapter = dateAdapter
             binding.recyclerviewDates.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             binding.textSelectedDate.text = "${availableSlots[0].day}, ${availableSlots[0].date}"
@@ -95,7 +95,7 @@ class TimeSelectFragment2 : Fragment() {
             viewModel.currentAppointmentsLiveData.value!!.forEach(){
                 if(it.date == date){
                     binding.textSelectedDate.text = "${it.day}, ${it.date}"
-                    val timeAdapter = TimeSlotAdapter(this, it.slots)
+                    val timeAdapter = TimeSlotAdapter(this, it.slots, viewModel.appointmentsStartFromLiveData, viewModel.appointmentsSlotLiveData)
                     binding.recyclerviewTime.adapter = timeAdapter
                     binding.recyclerviewTime.layoutManager = GridLayoutManager(context, 4)
                 }
