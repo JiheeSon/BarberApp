@@ -25,11 +25,16 @@ The app in itself is a simple barber app. Clicking the barber list item it shows
 
 ## 📸 Screenshots
 
-**Please click the image below to enlarge.**  
+**Please click the image below to enlarge.**   
+<img src="https://user-images.githubusercontent.com/58560069/184302743-a534b6fa-556b-4e8e-a7d3-c3dc5bfa9074.png"  width="200" height="400"/>
 <img src="https://user-images.githubusercontent.com/58560069/184147368-c260eb45-a3f3-4928-afc9-0185e8bc6403.png"  width="200" height="400"/>
 <img src="https://user-images.githubusercontent.com/58560069/184147521-defb9601-cf55-4a1f-8160-c916c8df5d4f.png"  width="200" height="400"/>
 <img src="https://user-images.githubusercontent.com/58560069/184147612-cb0d3b03-3d17-4b1a-bb3a-ffb241cb322d.png"  width="200" height="400"/>
 <img src="https://user-images.githubusercontent.com/58560069/184147703-670bfee9-4542-43c1-a065-224ffb5d6f60.png"  width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/58560069/184303079-5d3254dc-f5e2-4bec-b25a-ef185f28099b.png"  width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/58560069/184303165-2488049b-7edf-4242-9b7a-c4a93d4507e6.png"  width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/58560069/184303252-872429c2-a0f6-4b38-accc-f3d95a4d3fda.png"  width="200" height="400"/>
+
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
