@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/appointmentListFragment"
         android:name="com.example.barberapp.view.history.AppointmentListFragment"
-        android:label="fragment_appointment_list"
+        android:label="Appointments"
         tools:layout="@layout/fragment_appointment_list" >
         <action
             android:id="@+id/action_appointmentListFragment_to_appointmentDetailFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/appointmentDetailFragment"
         android:name="com.example.barberapp.view.history.AppointmentDetailFragment"
-        android:label="fragment_appointment_detail"
+        android:label="Appointment"
         tools:layout="@layout/fragment_appointment_detail" >
         <action
             android:id="@+id/action_appointmentDetailFragment_to_rescheduleFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/rescheduleFragment"
         android:name="com.example.barberapp.view.history.RescheduleFragment"
-        android:label="fragment_reschedule"
+        android:label="Reschedule Appointment"
         tools:layout="@layout/fragment_reschedule" >
         <action
             android:id="@+id/action_rescheduleFragment_to_appointmentDetailFragment"

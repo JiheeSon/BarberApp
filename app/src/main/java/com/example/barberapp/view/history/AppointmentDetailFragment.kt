@@ -78,11 +78,20 @@ class AppointmentDetailFragment : Fragment() {
                 textBarber.text = it.barberName
                 textAppointmentId.text = "Appointment Number ${it.aptNo}"
                 textStatus.text = it.aptStatus
+                textTotalCost.text = it.totalCost.toString()
 
-                if (it.aptStatus == "Canceled") {
-                    //textStatus.setCompoundDrawables(ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.ic_baseline_cancel_24, null), null, null, null)
-                    btnCancel.visibility = View.GONE
-                    btnReschedule.visibility = View.GONE
+                when (it.aptStatus) {
+                    "Canceled" -> {
+                        btnCancel.visibility = View.GONE
+                        btnReschedule.visibility = View.GONE
+                        stamp.setImageResource(R.drawable.canceled)
+                    }
+                    "Rescheduled" -> {
+                        stamp.setImageResource(R.drawable.rescheduled)
+                    }
+                    else -> {
+                        stamp.setImageResource(R.drawable.confirmed)
+                    }
                 }
 
                 if (isAdded) {

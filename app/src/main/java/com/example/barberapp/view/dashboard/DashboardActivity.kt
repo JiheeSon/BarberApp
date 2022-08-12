@@ -56,7 +56,11 @@ class DashboardActivity : AppCompatActivity() {
     private fun setUpViewModel() {
         val vmFactory = DashboardVMFactory(Repository(ApiService.getInstance()))
         viewModel = ViewModelProvider(this@DashboardActivity, vmFactory)[DashboardViewModel::class.java]
-        viewModel.getDashboard()
+
+        val pref = getSharedPreferences("user_info", MODE_PRIVATE)
+        val token = pref.getString("api_token", "")
+        val userId = pref.getString("user_Id", "")
+        viewModel.getDashboard(token!!, userId!!)
     }
 
     private fun initNavBar() {

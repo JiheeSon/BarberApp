@@ -44,7 +44,9 @@ class AppointmentAdapter (private val context: Context, private val viewModel: H
                 textTime.text = "${appointmentInfo.timeFrom} to ${appointmentInfo.timeTo} (${appointmentInfo.totalDuration} Minutes)"
                 textStatus.text = appointmentInfo.aptStatus
                 if (appointmentInfo.aptStatus == "Canceled") {
-                    textStatus.setCompoundDrawables(ResourcesCompat.getDrawable(context.resources, R.drawable.ic_baseline_cancel_24, null), null, null, null)
+                    icon.setImageResource(R.drawable.ic_baseline_cancel_24)
+                } else if (appointmentInfo.aptStatus == "Rescheduled") {
+                    icon.setImageResource(R.drawable.ic_baseline_restore_24)
                 }
             }
         }

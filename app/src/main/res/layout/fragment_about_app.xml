@@ -43,6 +43,8 @@
         android:text="Designed &amp; Developed BY"
         android:gravity="center"
         android:textStyle="bold"
+        android:textSize="@dimen/_20sp"
+        android:layout_marginTop="@dimen/_20dp"
         app:layout_constraintTop_toBottomOf="@id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -61,49 +63,80 @@
         android:text="Jihee Son"
         android:gravity="center"
         android:textStyle="bold"
+        android:textSize="@dimen/_17sp"
         app:layout_constraintTop_toBottomOf="@id/emoji"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/number"
-        android:text="Contact Number"
-        android:layout_marginTop="@dimen/_10dp"
-        android:gravity="center"
-        android:padding="@dimen/_10dp"
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/number"-->
+<!--        android:text="Contact Number"-->
+<!--        android:layout_marginTop="@dimen/_10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="@dimen/_10dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/jihee"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/phone"
+        android:src="@drawable/ic_baseline_local_phone_24"
+        android:layout_marginTop="@dimen/_30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/email"
         app:layout_constraintTop_toBottomOf="@id/jihee"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/mobile"
-        android:text="+1 332 288 8766"
-        android:textStyle="italic"
-        android:textColor="@color/main_sky_blue"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/email"
-        android:text="Email"
-        android:gravity="center"
-        android:padding="@dimen/_10dp"
-        android:layout_marginTop="@dimen/_10dp"
-        app:layout_constraintTop_toBottomOf="@id/mobile"
-        android:layout_width="match_parent"
+        android:src="@drawable/ic_baseline_attach_email_24"
+        android:layout_marginTop="@dimen/_30dp"
+        app:layout_constraintTop_toBottomOf="@id/jihee"
+        app:layout_constraintStart_toEndOf="@id/phone"
+        app:layout_constraintEnd_toStartOf="@id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/link"
+        android:src="@drawable/ic_baseline_insert_link_24"
+        android:layout_marginTop="@dimen/_30dp"
+        app:layout_constraintTop_toBottomOf="@id/jihee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/email"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/address"
-        android:text="jihee.son914@gmail.com"
-        android:textColor="@color/main_sky_blue"
-        android:textStyle="italic"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/mobile"-->
+<!--        android:text="+1 332 288 8766"-->
+<!--        android:textStyle="italic"-->
+<!--        android:textColor="@color/main_sky_blue"-->
+<!--        android:gravity="center"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/number"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/email"-->
+<!--        android:text="Email"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="@dimen/_10dp"-->
+<!--        android:layout_marginTop="@dimen/_10dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/mobile"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/address"-->
+<!--        android:text="jihee.son914@gmail.com"-->
+<!--        android:textColor="@color/main_sky_blue"-->
+<!--        android:textStyle="italic"-->
+<!--        android:gravity="center"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
 
 
 

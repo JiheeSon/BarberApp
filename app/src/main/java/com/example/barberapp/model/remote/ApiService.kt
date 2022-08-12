@@ -55,8 +55,12 @@ interface ApiService {
     fun getDashboard(): Call<DashboardResponse>
 
 
-    @GET("/alert/getList")
-    suspend fun getAlert(): Response<AlertResponse>
+    @Headers("Content-type: application/json")
+    @GET("/alert/getList/{user_id}")
+    suspend fun getAlert(
+        @Header("ps_auth_token") ps_auth_token: String,
+        @Path("user_id") userId: String
+    ): Response<AlertResponse>
 
 
     @POST("/barber/getBarberServices1")

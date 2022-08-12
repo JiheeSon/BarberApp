@@ -33,19 +33,19 @@ class DashboardViewModel(private val repository: Repository): ViewModel() {
     val processing = MutableLiveData<Boolean>()
     val alertLiveData = MutableLiveData<AlertResponse>()
 
-    fun getDashboard() {
+    fun getDashboard(token: String, userId: String) {
         repository.getDashboard()
         repository.getBarbers()
         repository.getServiceCategory()
-        preloadData()
+        preloadData(token, userId)
     }
 
-    private fun preloadData() {
+    private fun preloadData(token: String, userId: String) {
         viewModelScope.launch(Dispatchers.IO)
         {
             try {
                 processing.postValue(true)
-                val response = repository.getAlert()
+                val response = repository.getAlert(token, userId)
                 processing.postValue(false)
                 if (!response.isSuccessful) {
                     notiError.postValue("Failed to load data.Error code: ${response.code()}")

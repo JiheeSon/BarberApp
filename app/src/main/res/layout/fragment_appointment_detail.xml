@@ -115,6 +115,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_status"
+            android:src="@drawable/ic_baseline_check_circle_outline_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_status"
+            app:layout_constraintBottom_toBottomOf="@id/text_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_status"
             tools:text="Confirmed"
@@ -122,11 +131,19 @@
             android:textSize="@dimen/_25sp"
             android:gravity="center"
             android:layout_marginTop="@dimen/_20dp"
-            android:drawableStart="@drawable/ic_baseline_check_circle_outline_24"
+            android:layout_marginStart="@dimen/_10dp"
             app:layout_constraintTop_toBottomOf="@id/text_appointment_id"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_status"
+            android:layout_marginEnd="@dimen/_32dp"
+            android:layout_width="@dimen/_128dp"
+            android:layout_height="@dimen/_128dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cancel"
@@ -134,7 +151,7 @@
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_reschedule"
-            app:layout_constraintTop_toBottomOf="@id/text_status"
+            app:layout_constraintTop_toBottomOf="@id/stamp"
             android:layout_marginTop="@dimen/_20dp"
             android:layout_alignParentBottom="true"
             android:backgroundTint="@color/main_red"
