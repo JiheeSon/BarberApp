@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBgSNllXo4vcaE9fD0xBS1wR3vEAn1FWpY" />
+
         <activity
             android:name=".view.history.HistoryActivity"
             android:exported="false" />
